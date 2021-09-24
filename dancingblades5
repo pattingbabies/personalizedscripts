@@ -1,0 +1,22 @@
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
+
+local w = library:CreateWindow("Dancingblades5")
+
+local b = w:CreateFolder("#6071")
+
+b:Button("SPAM HEAL",function()
+    local args = {
+        [1] = game:GetService("Players").LocalPlayer.Character
+    }
+    
+    game:GetService("Players").LocalPlayer.Character.Scepter.RemoteEvent:FireServer(unpack(args))
+end)
+
+b:Button("TP TO SLIME",function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Slimes.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(0.1)
+    pl.CFrame = location
+end)
