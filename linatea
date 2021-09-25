@@ -67,6 +67,10 @@ a:Button("Generator 4",function()
     pl.CFrame = location
 end)
 
+a:Button("-",function()
+print(linatea)
+end)
+
 a:Button("Fusebox 1",function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
     local location = (game:GetService("Workspace").CurrentMap.Objectives.Fuseboxes1["Fusebox_1"].Box.CFrame)
@@ -98,6 +102,10 @@ a:Button("Fusebox 4",function()
     wait(0.1)
     pl.CFrame = location
 end)
+
+a:Button("-",function()
+	print(linatea)
+	end)
 
 a:Button("Gas Tank 1",function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
@@ -212,9 +220,5 @@ c:Button("Note 10",function()
     wait(0.1)
     pl.CFrame = location
 end)
-
-
-
-
 
 
