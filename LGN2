@@ -31,8 +31,6 @@ local args = {
 game:GetService("ReplicatedStorage").test:FireServer(unpack(args))
 
 wait(5)
-
--- Click Function
 local VirtualInputManager = game:GetService("VirtualInputManager")
 function Click(A_1)
     local X = A_1.AbsolutePosition.X
@@ -41,7 +39,8 @@ function Click(A_1)
     VirtualInputManager:SendMouseButtonEvent(X + X/2, Y + 50, 0, false, A_1, 1)
 end
 
-Click(game:GetService("Players").QnPirate.PlayerGui.UrbanGui.Frame.NewCrate)
+Click(game:GetService("Players").LocalPlayer.PlayerGui.UrbanGui.Frame.NewCrate)
+
 
 wait(7)
 
@@ -50,6 +49,11 @@ local location = CFrame.new(261, 4, -240)
 local humanoid = game.Players.LocalPlayer.Character.Humanoid
 wait(0.1)
 pl.CFrame = location
+
+wait(1)
+
+local Player = game:service('Players').LocalPlayer
+Player.Backpack['Crate'].Parent = Player.Character
 
 
 wait(2)
@@ -84,17 +88,5 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").test:FireServer(unpack(args))
-
-wait(1)
--- Click Function
-local VirtualInputManager = game:GetService("VirtualInputManager")
-function Click(A_1)
-    local X = A_1.AbsolutePosition.X
-    local Y = A_1.AbsolutePosition.Y
-    VirtualInputManager:SendMouseButtonEvent(X + X/2, Y + 50, 0, true, A_1, 1)
-    VirtualInputManager:SendMouseButtonEvent(X + X/2, Y + 50, 0, false, A_1, 1)
-end
-
-Click(game.Players.LocalPlayer.PlayerGui.Example.Frame.Redeem)
 
 end
