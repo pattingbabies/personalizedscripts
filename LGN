@@ -101,7 +101,6 @@ local args = {
 game:GetService("ReplicatedStorage").test:FireServer(unpack(args))
 
 wait(1)
--- Click Function
 local VirtualInputManager = game:GetService("VirtualInputManager")
 function Click(A_1)
     local X = A_1.AbsolutePosition.X
@@ -110,4 +109,4 @@ function Click(A_1)
     VirtualInputManager:SendMouseButtonEvent(X + X/2, Y + 50, 0, false, A_1, 1)
 end
 
-Click(game.Players.LocalPlayer.PlayerGui.Example.Frame.Redeem)
+Click(game:GetService("Players").LocalPlayer.PlayerGui.UrbanGui.Frame.NewCrate)
