@@ -100,7 +100,7 @@ local args = {
 
 game:GetService("ReplicatedStorage").test:FireServer(unpack(args))
 
-wait(1)
+wait(5)
 local VirtualInputManager = game:GetService("VirtualInputManager")
 function Click(A_1)
     local X = A_1.AbsolutePosition.X
