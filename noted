@@ -94,7 +94,7 @@ function greenlight()
             
             game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Mechanics.EndLine.CFrame
             wait(1)
-            game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Model.FBXImportGeneric["squid gaurd"].CFrame
+            game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Misc.MeshPart.CFrame
             wait(120)
         end
         end)
