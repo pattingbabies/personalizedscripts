@@ -37,7 +37,7 @@ function Click(A_1)
     VirtualInputManager:SendMouseButtonEvent(X + X/2, Y + 50, 0, false, A_1, 1)
 end
 
-Click(game:GetService("Players").QnPirate.PlayerGui.UrbanGui.Frame.NewCrate)
+Click(game:GetService("Players").LocalPlayer.PlayerGui.UrbanGui.Frame.NewCrate)
 
 
 wait(5)
@@ -51,7 +51,7 @@ function Click(A_1)
     VirtualInputManager:SendMouseButtonEvent(X + X/2, Y + 50, 0, false, A_1, 1)
 end
 
-Click(game:GetService("Players").QnPirate.PlayerGui.UrbanGui.Frame.NewCrate)
+Click(game:GetService("Players").LocalPlayer.PlayerGui.UrbanGui.Frame.NewCrate)
 
 wait(7)
 
