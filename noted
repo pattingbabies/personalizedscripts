@@ -1,0 +1,101 @@
+getgenv().greenred = false;
+
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
+
+local w = library:CreateWindow("Noted") -- Creates the window
+
+local b = w:CreateFolder("Main") -- Creates the folder(U will put here your buttons,etc)
+
+
+b:Button("Instant Win",function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-264, 2, 426)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+b:Button("TP To Lobby",function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(30, 3, 92)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+b:Toggle("Autofarm",function(bool)
+    getgenv().greenred = bool
+    print('Autofarm is: ', bool);
+    if bool then
+    greenlight();
+    end
+end)
+
+b:Button("Noclip PRESS Q",function()
+    local StealthMode = false -- If game has an anticheat that checks the logs
+
+    local Indicator
+    
+    if not StealthMode then
+        local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
+        print("NOCLIP: Press Q to Activate")
+        Indicator = Instance.new("TextLabel", ScreenGui)
+        Indicator.AnchorPoint = Vector2.new(0, 1)
+        Indicator.Position = UDim2.new(0, 0, 1, 0)
+        Indicator.Size = UDim2.new(0, 200, 0, 50)
+        Indicator.BackgroundTransparency = 1
+        Indicator.TextScaled = true
+        Indicator.TextStrokeTransparency = 0
+        Indicator.TextColor3 = Color3.new(0, 0, 0)
+        Indicator.TextStrokeColor3 = Color3.new(1, 1, 1)
+        Indicator.Text = "Noclip: Enabled"
+    end
+    
+    local noclip = true
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    
+    local mouse = player:GetMouse()
+    
+    mouse.KeyDown:Connect(function(key)
+        if key == "q" then
+            noclip = not noclip
+    
+            if not StealthMode then
+                Indicator.Text = "Noclip: " .. (noclip and "Enabled" or "Disabled")
+            end
+        end
+    end)
+    
+    while true do
+        player = game.Players.LocalPlayer
+        character = player.Character
+    
+        if noclip then
+            for _, v in pairs(character:GetDescendants()) do
+                pcall(function()
+                    if v:IsA("BasePart") then
+                        v.CanCollide = false
+                    end
+                end)
+            end
+        end
+    
+        game:GetService("RunService").Stepped:wait()
+    end
+end)
+
+
+
+
+function greenlight()
+    spawn(function()
+        while getgenv().greenred == true do
+            
+            game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Mechanics.EndLine.CFrame
+            wait(1)
+            game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Model.FBXImportGeneric["squid gaurd"].CFrame
+            wait(180)
+        end
+        end)
+    end
