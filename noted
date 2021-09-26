@@ -93,9 +93,9 @@ function greenlight()
         while getgenv().greenred == true do
             
             game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Misc.Baseplate.CFrame
-            wait(1)
+            wait(2)
             game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Misc.MeshPart.CFrame
-            wait(5)
+            wait(120)
         end
         end)
     end
