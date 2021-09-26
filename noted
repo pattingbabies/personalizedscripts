@@ -95,7 +95,7 @@ function greenlight()
             game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Misc.Baseplate.CFrame
             wait(1)
             game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Misc.MeshPart.CFrame
-            wait(120)
+            wait(5)
         end
         end)
     end
