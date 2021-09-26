@@ -92,7 +92,7 @@ function greenlight()
     spawn(function()
         while getgenv().greenred == true do
             
-            game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Mechanics.EndLine.CFrame
+            game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Misc.Baseplate.CFrame
             wait(1)
             game:GetService("Workspace").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").Misc.MeshPart.CFrame
             wait(120)
