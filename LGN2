@@ -1,0 +1,100 @@
+while wait() do
+
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(281, 4, -157)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+wait(0.1)
+pl.CFrame = location
+
+wait(1)
+
+local args = {
+    [1] = "Urban Barn"
+}
+
+game:GetService("ReplicatedStorage").DoorService:FireServer(unpack(args))
+
+wait(2)
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(-153.10199, -346.396942, 1331.58826)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+wait(0.1)
+pl.CFrame = location
+
+wait(1)
+
+local args = {
+    [1] = game:GetService("Players").LocalPlayer,
+    [2] = "Urban"
+}
+
+game:GetService("ReplicatedStorage").test:FireServer(unpack(args))
+
+wait(5)
+
+-- Click Function
+local VirtualInputManager = game:GetService("VirtualInputManager")
+function Click(A_1)
+    local X = A_1.AbsolutePosition.X
+    local Y = A_1.AbsolutePosition.Y
+    VirtualInputManager:SendMouseButtonEvent(X + X/2, Y + 50, 0, true, A_1, 1)
+    VirtualInputManager:SendMouseButtonEvent(X + X/2, Y + 50, 0, false, A_1, 1)
+end
+
+Click(game:GetService("Players").QnPirate.PlayerGui.UrbanGui.Frame.NewCrate)
+
+wait(7)
+
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(261, 4, -240)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+wait(0.1)
+pl.CFrame = location
+
+
+wait(2)
+game:GetService("Players").LocalPlayer.Character.Crate.Script.RemoteEvent:FireServer()
+
+wait(1)
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(281, 4, -157)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+wait(0.1)
+pl.CFrame = location
+
+wait(1)
+local args = {
+    [1] = "Urban Barn"
+}
+
+game:GetService("ReplicatedStorage").DoorService:FireServer(unpack(args))
+
+wait(1)
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(-153.10199, -346.396942, 1331.58826)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+wait(0.1)
+pl.CFrame = location
+
+wait(1)
+
+local args = {
+    [1] = game:GetService("Players").LocalPlayer,
+    [2] = "Urban"
+}
+
+game:GetService("ReplicatedStorage").test:FireServer(unpack(args))
+
+wait(1)
+-- Click Function
+local VirtualInputManager = game:GetService("VirtualInputManager")
+function Click(A_1)
+    local X = A_1.AbsolutePosition.X
+    local Y = A_1.AbsolutePosition.Y
+    VirtualInputManager:SendMouseButtonEvent(X + X/2, Y + 50, 0, true, A_1, 1)
+    VirtualInputManager:SendMouseButtonEvent(X + X/2, Y + 50, 0, false, A_1, 1)
+end
+
+Click(game.Players.LocalPlayer.PlayerGui.Example.Frame.Redeem)
+
+end
