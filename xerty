@@ -24,7 +24,7 @@ PlayerSection:NewSlider("JumpPower", "Increases the Players Jumppower", 100, 15,
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
 end)
 
-local PlayerSection = Dollz:NewSection("Max Stats")
+local PlayerSection = PHZ:NewSection("Max Stats")
 PlayerSection:NewButton("Max Stats", "Maxes out your max stats ingame", function()
     game:GetService("Players").LocalPlayer["Itz_Jay3131's Data"].Attributes.Power.Value = 5
     game:GetService("Players").LocalPlayer["Itz_Jay3131's Data"].Attributes["Burst Speed"].Value = 5
