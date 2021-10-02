@@ -8,7 +8,6 @@ local PlayerSection = PHZ:NewSection("Walkspeed")
 PlayerSection:NewSlider("Walkspeed", "Allows user to walk faster than normal", 300, 15, function(v) -- 500 (MaxValue) | 0 (MinValue)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
 end)
-end
 
 -- Games
 local Dollz = Window:NewTab("Game1")
