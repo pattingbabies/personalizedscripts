@@ -1,0 +1,37 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Xerty Private", "DarkTheme")
+
+-- Anti-cheat Bypass
+local old;
+old = hookfunction(getrawmetatable(game).__namecall,function(...)
+    local method = getnamecallmethod():lower()
+    local args = {...}
+    if method == "kick" or method == "fireserver" and tostring(args[1]) == "Detect Exploit" then
+        return
+    end
+    return old(...)
+end)
+
+-- Main
+
+local PHZ = Window:NewTab("Main")
+local PlayerSection = PHZ:NewSection("Walkspeed")
+PlayerSection:NewSlider("Walkspeed", "Allows user to walk faster than normal", 150, 15, function(v) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+end)
+local PlayerSection = PHZ:NewSection("JumpPower")
+PlayerSection:NewSlider("JumpPower", "Increases the Players Jumppower", 100, 15, function(v) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+end)
+
+local PlayerSection = Dollz:NewSection("Max Stats")
+PlayerSection:NewButton("Max Stats", "Maxes out your max stats ingame", function()
+    game:GetService("Players").LocalPlayer["Itz_Jay3131's Data"].Attributes.Power.Value = 5
+    game:GetService("Players").LocalPlayer["Itz_Jay3131's Data"].Attributes["Burst Speed"].Value = 5
+    game:GetService("Players").LocalPlayer["Itz_Jay3131's Data"].Attributes["Blocking Range"].Value = 5
+    game:GetService("Players").LocalPlayer["Itz_Jay3131's Data"].Attributes.Vertical.Value = 5
+    game:GetService("Players").LocalPlayer["Itz_Jay3131's Data"].Attributes["Passive Speed"].Value = 5
+    game:GetService("Players").LocalPlayer["Itz_Jay3131's Data"].Attributes.Springiness.Value = 5
+    game:GetService("Players").LocalPlayer["Itz_Jay3131's Data"].Attributes["Dive Distance"].Value = 5
+
+end)
