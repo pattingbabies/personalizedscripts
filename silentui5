@@ -1,0 +1,45 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+  local Window = Library.CreateLib("Silent Private", "BloodTheme")
+  
+  
+
+  
+  -- Games
+  local Dollz = Window:NewTab("Game 1")
+  local FunSection = Dollz:NewSection("Red Light, Green Light")
+  FunSection:NewButton("Instant Win", "Teleports u to the winning part making u automatically win", function()
+      local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+      local location = (game:GetService("Workspace").Map.RedLightGreenLight.Reward.CFrame)
+      local humanoid = game.Players.LocalPlayer.Character.Humanoid
+      wait(0.1)
+      pl.CFrame = location
+  
+  end)
+
+
+  
+  -- Games
+  local HowFunz = Window:NewTab("Game 2")
+  local Funz = HowFunz:NewSection("Shapes")
+  Funz:NewButton("Instant Win", "Instantly completes it", function(state)
+      local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+      local location = (game:GetService("Workspace").Map.Honeycomb.Reward.CFrame)
+      local humanoid = game.Players.LocalPlayer.Character.Humanoid
+      wait(0.1)
+      pl.CFrame = location
+      wait()
+  
+  end)
+
+    -- Games
+    local HowFunz = Window:NewTab("Game 3")
+    local Funz = HowFunz:NewSection("Glass")
+    Funz:NewButton("Instant Win", "instantly completes it", function(state)
+        local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+        local location = (game:GetService("Workspace").Map.Glass.Reward.CFrame)
+        local humanoid = game.Players.LocalPlayer.Character.Humanoid
+        wait(0.1)
+        pl.CFrame = location
+        wait()
+    
+    end)
