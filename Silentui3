@@ -1,0 +1,240 @@
+
+
+  local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+  local Window = Library.CreateLib("Silent Privaté", "BloodTheme")
+  
+
+
+  
+  -- Games
+  local Dollz = Window:NewTab("Features")
+  local FunSection = Dollz:NewSection("Fun")
+  FunSection:NewButton("Call Emergency Meeting", "Call Emergency Meeting", function()
+    local args = {
+      [1] = "alarmAttemp"
+  }
+  
+  game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+
+end)
+
+FunSection:NewButton("Lock All Doors(Imposter Only)", "Sabotages all doors ingame", function()
+
+
+local args = {
+  [1] = "doorSabotage",
+  [2] = "A"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+
+
+local args = {
+  [1] = "doorSabotage",
+  [2] = "G"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+
+local args = {
+  [1] = "doorSabotage",
+  [2] = "B"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+
+
+local args = {
+  [1] = "doorSabotage",
+  [2] = "D"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+
+
+local args = {
+  [1] = "doorSabotage",
+  [2] = "E"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+
+
+local args = {
+  [1] = "doorSabotage",
+  [2] = "F"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+
+
+local args = {
+  [1] = "doorSabotage",
+  [2] = "C"
+}
+
+game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+
+
+end)
+
+
+
+    FunSection:NewToggle("Loop Sabotage Reactor", "Loops Sabotage Reactor, might have to rejoin!", function(state)
+      while true do
+
+        local args = {
+          [1] = "reactorSabotage"
+      }
+      
+      game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+      wait()
+      end  
+      end)
+
+
+      FunSection:NewToggle("Loop Comms Sabotage", "Loops Comms Sabotage, might have to rejoin!", function(state)
+        while true do
+  
+          local args = {
+            [1] = "commsSabotage"
+        }
+        
+        game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+        wait()
+      end  
+      end)  
+
+
+        FunSection:NewToggle("Loop Oxygen Sabotage", "Loops Oxygen Sabotage, might have to rejoin!", function(state)
+          while true do
+    
+            local args = {
+              [1] = "oxygenSabotage"
+          }
+          
+          game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+          wait()
+      end  
+      end)
+
+          FunSection:NewToggle("Loop Electric Sabotage", "Loops Electric Sabotage, might have to rejoin!", function(state)
+            while true do
+      
+              local args = {
+                [1] = "electricSabotage"
+            }
+            
+            game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+            wait()
+      end  
+      end)
+
+
+
+  local Forre = Window:NewTab("Tasks")
+  local FunRSection = Forre:NewSection("TP Tasks")
+  FunRSection:NewButton("Clear Asteroids", "nil", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Clear_Weapons"].Selection.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+FunRSection:NewButton("Stabalize Steering", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Stabilize_Navigation"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+end)
+
+FunRSection:NewButton("Fix Wiring", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Fix_Electrical"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+end)
+
+FunRSection:NewButton("Devert Power to Security", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Divert_Electrical"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+end)
+
+FunRSection:NewButton("Admin: Swipe Card", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Swipe_Admin"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+end)
+
+FunRSection:NewButton("Chart Course", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Chart_Navigation"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+end)
+
+FunRSection:NewButton("Fuel Enginees", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Fuel_Storage"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+end)
+
+FunRSection:NewButton("Fuel Lower", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Fuel_Lower"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+end)
+
+FunRSection:NewButton("Start Reactor", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Start_Reactor"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+end)
+
+FunRSection:NewButton("Calibrate Distributor", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Calibrate_Electrical"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+end)
+
+FunRSection:NewButton("Unlock Manifolds", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Unlock_Reactor"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+end)
+
+FunRSection:NewButton("Download Data", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Download_Comms"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+end)
+
+FunRSection:NewButton("Empty Garbage", "nil", function()
+  local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local location = (game:GetService("Workspace").CurrentMap["The Skeld"].Tasks["Empty_Cafeteria"].Task.CFrame)
+  local humanoid = game.Players.LocalPlayer.Character.Humanoid
+  wait(0.1)
+  pl.CFrame = location
+
+end)
