@@ -129,6 +129,32 @@ FunRSection:NewButton("Teleport To Dai", "Teleports you to Dai", function()
     pl.CFrame = location
 end)
 
+FunRSection:NewButton("Teleport To Cabbage Man", "Teleports you to Cabbage Man", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").NPC["Cabbage Man"].Head.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+FunRSection:NewButton("Teleport To Earth Police", "Teleports you to Earth Police", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").NPC["Earth Police"].Head.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+FunRSection:NewButton("Teleport To ek lady", "Teleports you to ek lady", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").NPC["ek lady"].Head.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+-- trainer tps
+
 local FunRSection = FunTP:NewSection("Trainer TPs")
 FunRSection:NewButton("Teleport To Firebending Trainer", "Teleports you to Firebending Trainer", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
