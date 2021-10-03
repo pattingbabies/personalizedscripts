@@ -3,7 +3,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 
 local Window = Library.CreateLib("Azure Private", "BloodTheme")
 local FunClaw = Window:NewTab("Main")
-local FunPSection = FunClaw:NewSection("Auto Meditate")
+local FunPSection = FunClaw:NewSection("Get Families")
 FunPSection:NewButton("Get Vaan", "Gets the family name Vaan ingame", function()
     local args = {
 		[1] = "Family",
