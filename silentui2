@@ -1,92 +1,103 @@
- local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-  local Window = Library.CreateLib("Silent Private", "BloodTheme")
-  
-  -- Main
-  
-  local PHZ = Window:NewTab("Main")
-  local PlayerSection = PHZ:NewSection("Walkspeed")
-  PlayerSection:NewSlider("Walkspeed", "Allows user to walk faster than normal", 300, 15, function(v) -- 500 (MaxValue) | 0 (MinValue)
-      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
-  end)
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Silent Private", "BloodTheme")
 
-  
-  -- Games
-  local Dollz = Window:NewTab("Game1")
-  local FunSection = Dollz:NewSection("Game1")
-  FunSection:NewButton("Tp To Win Part", "Teleports u to the winning part making u automatically win", function()
-      local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-      local location = CFrame.new(-309, 3, 422)
-      local humanoid = game.Players.LocalPlayer.Character.Humanoid
-      wait(0.1)
-      pl.CFrame = location
-  
-  end)
+-- Main
 
-  FunSection:NewButton("Tp To Game", "Teleports u to the winning entrance of the game", function()
-    local args = {
-      [1] = workspace.Mechanics.GoalPart1
-  }
-  
-  game:GetService("ReplicatedStorage").Remotes.ReachedGoal:FireServer(unpack(args))
-
-end)
-  
-  -- Games
-  
-  -- Games
-  local HowFunz = Window:NewTab("Game2")
-  local Funz = HowFunz:NewSection("Game2")
-  Funz:NewButton("Auto Complete Comb", "Auto completes the comb for you", function(state)
-    local args = {
-      [1] = true
-  }
-  
-  game:GetService("ReplicatedStorage").Remotes.HoneyCombResult:FireServer(unpack(args))
-      wait()
-  
-  end)
-
-      Funz:NewButton("Tp To Game", "Teleports u to the winning entrance of the game", function()
-        local args = {
-          [1] = workspace.Mechanics.GoalPart1
-      }
-      
-      game:GetService("ReplicatedStorage").Remotes.ReachedGoal:FireServer(unpack(args))
-
-  end)
-  
-  -- Games
-  local GlassNight = Window:NewTab("Game3")
-  local Glass = GlassNight:NewSection("Game3")
-  Glass:NewToggle("Auto Pull", "Auto Pulls", function()
-    while true do
-    local args = {
-      [1] = 1.0166273368523
-  }
-  
-  game:GetService("ReplicatedStorage").Pull:FireServer(unpack(args))
-  wait()
-end
+local PHZ = Window:NewTab("Main")
+local PlayerSection = PHZ:NewSection("Walkspeed")
+PlayerSection:NewSlider("Walkspeed", "Allows user to walk faster than normal", 300, 15, function(v) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
 end)
 
-   Glass:NewButton("Tp To Game", "Teleports u to the winning entrance of the game", function()
-        local args = {
-          [1] = workspace.Mechanics.GoalPart1
-      }
-      
-      game:GetService("ReplicatedStorage").Remotes.ReachedGoal:FireServer(unpack(args))
 
-   end)
+-- Games
+local Dollz = Window:NewTab("Game1")
+local FunSection = Dollz:NewSection("Game1")
+FunSection:NewButton("Tp To Win Part", "Teleports u to the winning part making u automatically win", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = CFrame.new(-309, 3, 422)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
 
-  -- Games
-  local GlassBby = Window:NewTab("Game4")
-  local EzGlass = GlassBby:NewSection("Game4")
+end)
 
-   EzGlass:NewButton("Tp To Game", "Teleports u to the winning entrance of the game", function()
-        local args = {
-          [1] = workspace.Mechanics.GoalPart1
-      }
-      
-      game:GetService("ReplicatedStorage").Remotes.ReachedGoal:FireServer(unpack(args))
+FunSection:NewButton("Tp To Game", "Teleports u to the winning entrance of the game", function()
+  local args = {
+    [1] = workspace.Mechanics.GoalPart1
+}
 
+game:GetService("ReplicatedStorage").Remotes.ReachedGoal:FireServer(unpack(args))
+
+end)
+
+-- Games
+
+-- Games
+local HowFunz = Window:NewTab("Game2")
+local Funz = HowFunz:NewSection("Game2")
+Funz:NewButton("Auto Complete Comb", "Auto completes the comb for you", function(state)
+  local args = {
+    [1] = true
+}
+
+game:GetService("ReplicatedStorage").Remotes.HoneyCombResult:FireServer(unpack(args))
+    wait()
+
+end)
+
+    Funz:NewButton("Tp To Game", "Teleports u to the winning entrance of the game", function()
+      local args = {
+        [1] = workspace.Mechanics.GoalPart1
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.ReachedGoal:FireServer(unpack(args))
+
+end)
+
+-- Games
+local GlassNight = Window:NewTab("Game3")
+local Glass = GlassNight:NewSection("Game3")
+Glass:NewToggle("Auto Pull", "Auto Pulls",function(bool)
+    getgenv().autopullaz = bool
+
+    print('Auto Pull is: ', bool);
+    if bool then
+    autopull();
+    end
   end)
+
+ Glass:NewButton("Tp To Game", "Teleports u to the winning entrance of the game", function()
+      local args = {
+        [1] = workspace.Mechanics.GoalPart1
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.ReachedGoal:FireServer(unpack(args))
+
+ end)
+
+-- Games
+local GlassBby = Window:NewTab("Game4")
+local EzGlass = GlassBby:NewSection("Game4")
+
+ EzGlass:NewButton("Tp To Game", "Teleports u to the winning entrance of the game", function()
+      local args = {
+        [1] = workspace.Mechanics.GoalPart1
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.ReachedGoal:FireServer(unpack(args))
+
+end)
+
+function autopull()
+    spawn(function()
+        while getgenv().autopullaz == true do
+            local args = {
+                [1] = 1.0166273368523
+            }
+            
+            game:GetService("ReplicatedStorage").Pull:FireServer(unpack(args))
+            wait()
+        end
+    end)
+    end
