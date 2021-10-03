@@ -31,10 +31,10 @@ wait()
 end  
 end)
 
--- Yen Section
+-- Panda Lily Quest, yen Section
 
 local FunYeni = Window:NewTab("Yen Farm")
-local FunLSection = FunYeni:NewSection("Young Lady, Panda Lily Quest")
+local FunLSection = FunYeni:NewSection("Young Lady, Panda Lily Quest (150 Yen)")
 FunLSection:NewButton("Teleport To Young Lady", "Teleports you to Young Lady", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
     local location = (game:GetService("Workspace").NPC["Young Lady ( Panda Lily )"].HumanoidRootPart.CFrame)
@@ -46,6 +46,24 @@ end)
 FunLSection:NewButton("Find Panda Lily", "Teleports you to Panda Lily", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
     local location = (game:GetService("Workspace").Map.Volcano["Panda Lily"]["Panda Lily Spawn"].CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+-- Panda Lumberjack, yen Section
+local FunLSection = FunYeni:NewSection("Lumberjack, Lumberjack Quest (200 Yen)")
+FunLSection:NewButton("Lumberjack", "Teleports you to Lumberjack", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").NPC.Lumberjack.HumanoidRootPart.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+FunLSection:NewButton("Find Choppable Tree", "Teleports you to a choppable tree", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map["Choppable Tree"].Prompt.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
