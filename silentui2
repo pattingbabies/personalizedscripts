@@ -1,64 +1,4 @@
-if game.PlaceId == 7549229959 then
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Silent Private", "BloodTheme")
-
--- Main
-
-local PHZ = Window:NewTab("Main")
-local PlayerSection = PHZ:NewSection("Walkspeed")
-PlayerSection:NewSlider("Walkspeed", "Allows user to walk faster than normal", 300, 15, function(v) -- 500 (MaxValue) | 0 (MinValue)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
-end)
-
--- Games
-local Dollz = Window:NewTab("Game1")
-local FunSection = Dollz:NewSection("Game1")
-FunSection:NewButton("Tp To Win Part", "Teleports u to the winning part making u automatically win", function()
-    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = CFrame.new(-129, 6, -665)
-    local humanoid = game.Players.LocalPlayer.Character.Humanoid
-    wait(0.1)
-    pl.CFrame = location
-
-end)
-
--- Games
-local Killnight = Window:NewTab("Survive The Night")
-local FunSection = Killnight:NewSection("Survive The Night")
-FunSection:NewButton("Teleport To Safety", "Teleports u to a safety block to make you safe when the round is on", function()
-    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").LobbyArea.Screen1.Part.CFrame)
-    local humanoid = game.Players.LocalPlayer.Character.Humanoid
-    wait(0.1)
-    pl.CFrame = location
-
-end)
-
--- Games
-local HowFunz = Window:NewTab("Game2")
-local Funz = HowFunz:NewSection("Game2")
-Funz:NewToggle("Auto Pull", "Auto pulls for you", function(state)
-while true do
-    game:GetService("ReplicatedStorage").TugRemote:FireServer()
-    wait()
-    end
-end)
-
--- Games
-local GlassNight = Window:NewTab("Game3")
-local Glass = GlassNight:NewSection("Game3")
-Glass:NewButton("Teleport To Win Part", "Teleports u to a safety block to make you safe when the round is on", function()
-    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").Game3.Win.CFrame)
-    local humanoid = game.Players.LocalPlayer.Character.Humanoid
-    wait(0.1)
-    pl.CFrame = location
-
-end)
-end
-
-if game.Placeid == 7577073048 then
 
   local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
   local Window = Library.CreateLib("Silent Private", "BloodTheme")
@@ -120,7 +60,7 @@ end)
   -- Games
   local GlassNight = Window:NewTab("Game3")
   local Glass = GlassNight:NewSection("Game3")
-  Glass:NewButton("Teleport To Win Part", "Teleports u to a safety block to make you safe when the round is on", function()
+  Glass:NewToggle("Auto Pull", "Auto Pulls", function()
     while true do
     local args = {
       [1] = 1.0166273368523
@@ -128,5 +68,14 @@ end)
   
   game:GetService("ReplicatedStorage").Pull:FireServer(unpack(args))
   wait()
-  end)
 end
+end)
+
+   Glass:NewButton("Tp To Game", "Teleports u to the winning entrance of the game", function()
+        local args = {
+          [1] = workspace.Mechanics.GoalPart1
+      }
+      
+      game:GetService("ReplicatedStorage").Remotes.ReachedGoal:FireServer(unpack(args))
+
+  end)
