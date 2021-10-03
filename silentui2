@@ -1,6 +1,4 @@
-
-
-  local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
   local Window = Library.CreateLib("Silent Private", "BloodTheme")
   
   -- Main
@@ -72,6 +70,19 @@ end
 end)
 
    Glass:NewButton("Tp To Game", "Teleports u to the winning entrance of the game", function()
+        local args = {
+          [1] = workspace.Mechanics.GoalPart1
+      }
+      
+      game:GetService("ReplicatedStorage").Remotes.ReachedGoal:FireServer(unpack(args))
+
+   end)
+
+  -- Games
+  local GlassBby = Window:NewTab("Game4")
+  local EzGlass = GlassBby:NewSection("Game4")
+
+   EzGlass:NewButton("Tp To Game", "Teleports u to the winning entrance of the game", function()
         local args = {
           [1] = workspace.Mechanics.GoalPart1
       }
