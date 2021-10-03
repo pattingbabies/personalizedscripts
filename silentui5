@@ -20,10 +20,10 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
   
   -- Games
   local HowFunz = Window:NewTab("Game 2")
-  local Funz = HowFunz:NewSection("Shapes")
+  local Funz = HowFunz:NewSection("Tug Game")
   Funz:NewButton("Instant Win", "Instantly completes it", function(state)
       local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-      local location = (game:GetService("Workspace").Map.Honeycomb.Reward.CFrame)
+      local location = (game:GetService("Workspace").Map.TugOfWar.Reward.CFrame)
       local humanoid = game.Players.LocalPlayer.Character.Humanoid
       wait(0.1)
       pl.CFrame = location
@@ -31,8 +31,22 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
   
   end)
 
+
     -- Games
     local HowFunz = Window:NewTab("Game 3")
+    local Funz = HowFunz:NewSection("Shapes")
+    Funz:NewButton("Instant Win", "Instantly completes it", function(state)
+        local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+        local location = (game:GetService("Workspace").Map.Honeycomb.Reward.CFrame)
+        local humanoid = game.Players.LocalPlayer.Character.Humanoid
+        wait(0.1)
+        pl.CFrame = location
+        wait()
+    
+    end)
+
+    -- Games
+    local HowFunz = Window:NewTab("Game 4")
     local Funz = HowFunz:NewSection("Glass")
     Funz:NewButton("Instant Win", "instantly completes it", function(state)
         local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
@@ -43,3 +57,4 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
         wait()
     
     end)
+
