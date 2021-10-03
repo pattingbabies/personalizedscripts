@@ -1,9 +1,11 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
-
+-- Theme
 local Window = Library.CreateLib("Azure Private", "BloodTheme")
+
+-- Main Section
 local FunClaw = Window:NewTab("Main")
-local FunPSection = FunClaw:NewSection("Get Families")
+local FunPSection = FunClaw:NewSection("Get Families (You need at least 1 spin!")
 FunPSection:NewButton("Get Vaan", "Gets the family name Vaan ingame", function()
     local args = {
 		[1] = "Family",
@@ -13,9 +15,11 @@ FunPSection:NewButton("Get Vaan", "Gets the family name Vaan ingame", function()
 	game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Spin Result"):FireServer(unpack(args))	
 end)
 
+-- Farming Section
+
 local FunStab = Window:NewTab("Farming")
 local FunPSection = FunStab:NewSection("Auto Meditate")
-
+-- Auto meditate 
 FunPSection:NewToggle("Auto Meditate", "Automatically meditates for you", function(state)
 while true do
     local args = {
@@ -26,6 +30,27 @@ while true do
 wait()
 end  
 end)
+
+-- Yen Section
+
+local FunYeni = Window:NewTab("Yen Farm")
+local FunLSection = FunYeni:NewSection("Young Lady, Panda Lily Quest")
+FunLSection:NewButton("Teleport To Young Lady", "Teleports you to Young Lady", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").NPC["Young Lady ( Panda Lily )"].HumanoidRootPart.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+FunLSection:NewButton("Find Panda Lily", "Teleports you to Panda Lily", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Volcano["Panda Lily"]["Panda Lily Spawn"].CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
 
 
 -- anti mod
