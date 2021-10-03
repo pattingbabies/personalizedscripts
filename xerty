@@ -17,7 +17,9 @@ end)
 local PHZ = Window:NewTab("Main")
 local PlayerSection = PHZ:NewSection("Walkspeed")
 PlayerSection:NewSlider("Walkspeed", "Allows user to walk faster than normal", 150, 15, function(v) -- 500 (MaxValue) | 0 (MinValue)
+while wait() do
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end
 end)
 local PlayerSection = PHZ:NewSection("JumpPower")
 PlayerSection:NewSlider("JumpPower", "Increases the Players Jumppower", 100, 15, function(v) -- 500 (MaxValue) | 0 (MinValue)
