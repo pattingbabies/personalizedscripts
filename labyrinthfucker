@@ -28,8 +28,11 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 end)
   
 local FunSection = MFeatures:NewSection("Features")
-FunSection:NewButton("Godmode", "Gives infinite HP", function(state)
-    game.Players.LocalPlayer.Character.Humanoid.MaxHealth = 0.00000000000000000000000000001
+FunSection:NewButton("Godmode (Objects can still kill you)", "Gives infinite HP", function(state)
+    while true do
+game.Players.LocalPlayer.Character.Humanoid.MaxHealth = 200
+wait()
+end
 end)
 
 FunSection:NewButton("Noclip(Hold V)", "Gives you noclip", function(state)
@@ -48,6 +51,9 @@ game:GetService("UserInputService").JumpRequest:connect(function()
 		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
 	end
 end)
+
+
+
 local InfiniteJump = CreateButton("Infinite Jump: Off", StuffFrame)
 InfiniteJump.Position = UDim2.new(0,10,0,130)
 InfiniteJump.Size = UDim2.new(0,150,0,30)
@@ -78,5 +84,21 @@ end)
 
     local FunBSection = LFeatures:NewSection("Destroy Kill Blocks")
 FunBSection:NewButton("Destroy Kill Blocks", "Removes all kills blocks ingame", function(state)
+
+end)
     
-    end)
+    local FunRSection = LFeatures:NewSection("Tools")
+    FunRSection:NewButton("Auto Mine/Axe", "Auto mines trees/ores for you", function(state)
+        while true do
+            local args = {
+                [1] = "Action",
+                [2] = Vector3.new(15.678342819214, 10.997314453125, -74.014572143555)
+            }
+            
+            game:GetService("ReplicatedStorage").Resources.Data.Events.Traffic.Gear:InvokeServer(unpack(args))
+        
+        end
+        end)
+        
+    
+    
