@@ -1,0 +1,82 @@
+-- Kick Bypass
+local old;
+old = hookfunction(getrawmetatable(game).__namecall,function(...)
+    local method = getnamecallmethod():lower()
+    local args = {...}
+    if method == "kick" or method == "fireserver" and tostring(args[1]) == "DataStreamTrigger" then
+        return
+    end
+    return old(...)
+end)
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+  local Window = Library.CreateLib("Labyrinth Fucker", "Synapse")
+  
+  
+
+  
+  -- Games
+  local MFeatures = Window:NewTab("Main Features")
+  local FunSection = MFeatures:NewSection("Ingame Mods")
+  FunSection:NewSlider("Walkspeed", "Makes u faster", 30, 5, function(s) -- 30 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+
+  end)
+  FunSection:NewSlider("JumpPower", "allows u to jump higher", 200, 5, function(s) -- 200 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+  
+local FunSection = MFeatures:NewSection("Features")
+FunSection:NewButton("Godmode", "Gives infinite HP", function(state)
+    game.Players.LocalPlayer.Character.Humanoid.MaxHealth = 0.00000000000000000000000000001
+end)
+
+FunSection:NewButton("Noclip(Hold V)", "Gives you noclip", function(state)
+    game:getService("RunService"):BindToRenderStep("",0,function()
+        if not game.Players.LocalPlayer.Character:findFirstChildOfClass("Humanoid") then return end
+        if game:getService("UserInputService"):IsKeyDown(Enum.KeyCode.V) then
+        game.Players.LocalPlayer.Character:findFirstChildOfClass("Humanoid"):ChangeState(11)
+        end
+        end)
+end)
+
+FunSection:NewButton("Infinite Jump", "Infinite Jumps ur character", function(state)
+    local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+local InfiniteJump = CreateButton("Infinite Jump: Off", StuffFrame)
+InfiniteJump.Position = UDim2.new(0,10,0,130)
+InfiniteJump.Size = UDim2.new(0,150,0,30)
+InfiniteJump.MouseButton1Click:connect(function()
+	local state = InfiniteJump.Text:sub(string.len("Infinite Jump: ") + 1) --too lazy to count lol
+	local new = state == "Off" and "On" or state == "On" and "Off"
+	InfiniteJumpEnabled = new == "On"
+	InfiniteJump.Text = "Infinite Jump: " .. new
+end)
+end)
+
+local LFeatures = Window:NewTab("Misc")
+local FunBSection = LFeatures:NewSection("Misc")
+FunBSection:NewButton("FullBright", "makes the whole map brighter", function(state)
+    local s = Instance.new("PointLight", game.Players.LocalPlayer.Character.Head)
+s.Brightness = .3
+s.Range = 100
+
+game.Lighting.Changed:connect(function()
+game.Lighting.TimeOfDay = "14:00:00"
+game.Lighting.FogEnd = 9999
+game.Lighting.Brightness = 2
+game.Lighting.ColorCorrection.Brightness = 0.1
+game.Lighting.ColorCorrection.Saturation = 0.1
+game.Lighting.Bloom.Intensity = 0.1
+end)
+end)
+
+    local FunBSection = LFeatures:NewSection("Destroy Kill Blocks")
+FunBSection:NewButton("Destroy Kill Blocks", "Removes all kills blocks ingame", function(state)
+    
+    end)
