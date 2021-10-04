@@ -36,6 +36,19 @@ end)
 -- Games
 local HowFunz = Window:NewTab("Game2")
 local Funz = HowFunz:NewSection("Game2")
+Funz:NewToggle("Complete Honey Comb", "Auto completes honey comb for you", function(state)
+    local args = {
+        [1] = true
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.SugarHoneycomb:FireServer(unpack(args))
+    
+        
+end)
+
+-- Games
+local HowFunz = Window:NewTab("Game3")
+local Funz = HowFunz:NewSection("Game3")
 Funz:NewToggle("Auto Pull", "Auto pulls for you", function(state)
 while true do
     game:GetService("ReplicatedStorage").TugRemote:FireServer()
@@ -44,9 +57,9 @@ while true do
 end)
 
 -- Games
-local GlassNight = Window:NewTab("Game3")
-local Glass = GlassNight:NewSection("Game3")
-Glass:NewButton("Teleport To Win Part", "Teleports u to a safety block to make you safe when the round is on", function()
+local GlassNight = Window:NewTab("Game4")
+local Glass = GlassNight:NewSection("Game4")
+Glass:NewButton("Teleport To Win Part", "Teleports u to the win part", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
     local location = (game:GetService("Workspace").Game3.Win.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
@@ -54,3 +67,4 @@ Glass:NewButton("Teleport To Win Part", "Teleports u to a safety block to make y
     pl.CFrame = location
 
 end)
+
