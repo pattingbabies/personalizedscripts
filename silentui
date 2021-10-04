@@ -36,7 +36,7 @@ end)
 -- Games
 local HowFunz = Window:NewTab("Game2")
 local Funz = HowFunz:NewSection("Game2")
-Funz:NewToggle("Complete Honey Comb", "Auto completes honey comb for you", function(state)
+Funz:NewButton("Complete Honey Comb", "Auto completes honey comb for you", function()
     local args = {
         [1] = true
     }
