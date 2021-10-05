@@ -1,0 +1,495 @@
+-- Kick Bypass, don't change.
+local old;
+old = hookfunction(getrawmetatable(game).__namecall,function(...)
+    local method = getnamecallmethod():lower()
+    local args = {...}
+    if method == "kick" or method == "fireserver" and tostring(args[1]) == "kickPlyr" then
+        return
+    end
+    return old(...)
+end)
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Bloody Winter v2", "Ocean")
+
+
+
+  local MainTab = Window:NewTab("Main")
+local FeaturesSelect = MainTab:NewSection("Features")
+FeaturesSelect:NewButton("Godmode(Don't use any type of healing items after executing!", "Don't use any type of healing item as it will reset your health to 100",function(bool)
+People = game.Players.LocalPlayer.Character
+game.Workspace.resources.events.humTakeDamage:FireServer(People.Humanoid, -9999999)
+  end)
+
+  FeaturesSelect:NewButton("Credits Script", "nil",function()
+    while wait() do
+
+        local args = {
+            [1] = workspace.commonInfected.Zombie.Humanoid,
+            [2] = 100,
+            [3] = workspace.commonInfected.Zombie.Head
+        }
+        
+        workspace.resources.events.humTakeDamage:FireServer(unpack(args))
+        
+        end
+    
+    
+    
+      end)
+
+
+
+      FeaturesSelect:NewButton("Item Spawner GUI", "Gives you a GUI that allows you to spawn items",function()
+-- [Spawn GUI]
+
+local spawner = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local ItemFrame = Instance.new("ScrollingFrame")
+local ItemSearch = Instance.new("TextBox")
+local SpawnButton = Instance.new("TextButton")
+local Title = Instance.new("TextLabel")
+
+
+spawner.Name = "spawner"
+spawner.Parent = game.CoreGui
+
+Main.Name = "Main"
+Main.Parent = spawner
+Main.BackgroundColor3 = Color3.new(0.701961, 0.701961, 0.701961)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0, 667, 0, 228)
+Main.Size = UDim2.new(0, 266, 0, 244)
+Main.Active = true
+Main.Draggable = true
+
+ItemFrame.Name = "ItemFrame"
+ItemFrame.Parent = Main
+ItemFrame.BackgroundColor3 = Color3.new(0.317647, 0.317647, 0.317647)
+ItemFrame.BorderSizePixel = 0
+ItemFrame.Position = UDim2.new(0, 56, 0, 76)
+ItemFrame.Size = UDim2.new(0, 155, 0, 92)
+ItemFrame.BottomImage = "rbxasset://textures/ui/Scroll/scroll-middle.png"
+ItemFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
+ItemFrame.TopImage = "rbxasset://textures/ui/Scroll/scroll-middle.png"
+
+ItemSearch.Name = "ItemSearch"
+ItemSearch.Parent = Main
+ItemSearch.BackgroundColor3 = Color3.new(0.533333, 0.533333, 0.533333)
+ItemSearch.BorderSizePixel = 0
+ItemSearch.Position = UDim2.new(0, 56, 0, 53)
+ItemSearch.Size = UDim2.new(0, 155, 0, 25)
+ItemSearch.Font = Enum.Font.SourceSansBold
+ItemSearch.FontSize = Enum.FontSize.Size14
+ItemSearch.Text = "Search for an item!"
+ItemSearch.TextColor3 = Color3.new(1, 1, 1)
+ItemSearch.TextScaled = true
+ItemSearch.TextSize = 14
+ItemSearch.TextWrapped = true
+
+SpawnButton.Name = "SpawnButton"
+SpawnButton.Parent = Main
+SpawnButton.BackgroundColor3 = Color3.new(0.027451, 1, 0.482353)
+SpawnButton.BorderSizePixel = 0
+SpawnButton.Position = UDim2.new(0, 34, 0, 186)
+SpawnButton.Size = UDim2.new(0, 199, 0, 35)
+SpawnButton.ZIndex = 2
+SpawnButton.AutoButtonColor = false
+SpawnButton.Font = Enum.Font.ArialBold
+SpawnButton.FontSize = Enum.FontSize.Size14
+SpawnButton.Text = "SPAWN"
+SpawnButton.TextColor3 = Color3.new(1, 1, 1)
+SpawnButton.TextScaled = true
+SpawnButton.TextSize = 14
+SpawnButton.TextWrapped = true
+
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundColor3 = Color3.new(1, 1, 1)
+Title.BackgroundTransparency = 1
+Title.BorderSizePixel = 0
+Title.Size = UDim2.new(0, 266, 0, 30)
+Title.Font = Enum.Font.SourceSansBold
+Title.FontSize = Enum.FontSize.Size14
+Title.Text = "DeadWinter"
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.TextScaled = true
+Title.TextSize = 14
+Title.TextWrapped = true
+
+local backgroundObjects = Instance.new('Folder', spawner.Main)
+backgroundObjects.Name = 'BackgroundObjects'
+
+local SpawnButton = Instance.new("TextButton", backgroundObjects)
+SpawnButton.Name = "SpawnButton"
+SpawnButton.Parent = game.CoreGui.spawner.Main.BackgroundObjects
+SpawnButton.BackgroundColor3 = Color3.new(0.0196078, 0.729412, 0.34902)
+SpawnButton.BorderSizePixel = 0
+SpawnButton.Position = UDim2.new(0, 34, 0, 193)
+SpawnButton.Size = UDim2.new(0, 199, 0, 35)
+SpawnButton.AutoButtonColor = false
+SpawnButton.Font = Enum.Font.SourceSans
+SpawnButton.FontSize = Enum.FontSize.Size14
+SpawnButton.Text = ""
+SpawnButton.TextSize = 14
+
+local gui = spawner.Main
+local box = gui:WaitForChild('ItemSearch')
+local items = gui:WaitForChild('ItemFrame')
+local path = Game.Lighting.assets.itemModels
+local btn = gui:WaitForChild('SpawnButton')
+local pos = gui:WaitForChild('BackgroundObjects').SpawnButton.Position
+
+
+local function search(text)
+	local items = {}
+	for i, v in next, path:GetChildren() do
+		if text:upper() == v.Name:sub(1, string.len(text)):upper() then
+			table.insert(items, v.Name)
+		end
+	end
+	return items
+end
+
+local function bind(thing, f)
+	thing.MouseButton1Click:connect(function()
+		f()
+	end)
+end
+
+box.Changed:connect(function()
+	local list = search(box.Text)
+	if box.Text:gsub("", "") == "" then
+		items.CanvasSize = UDim2.new(0, 0, 0, 0)
+		items:ClearAllChildren()
+		return 
+	end
+	items.CanvasSize = UDim2.new(0, 0, 0, 0)
+	items:ClearAllChildren()
+	for i, v in next, list do
+		local yPos = ((20 * i) - 20)
+		local s = Instance.new('TextButton', items)
+		s.BorderSizePixel = 0
+		s.Font = Enum.Font.ArialBold
+		s.TextScaled = true
+		s.Text = v
+		s.Name = v
+		s.BackgroundColor3 = Color3.fromRGB(211, 211, 211)
+		s.TextColor3 = Color3.new(0, 0, 0)
+		s.Size = UDim2.new(0, 155, 0, 20)
+		s.Position = UDim2.new(0, 0, 0, yPos)
+		bind(s, function()
+			box.Text = s.Text
+			items:ClearAllChildren()
+			items.CanvasSize = UDim2.new(0, 0, 0, 0)
+		end)
+	end
+	items.CanvasSize = UDim2.new(0, 0, 0, (20 * #list))
+end)
+
+local People = game.Players.LocalPlayer.Name
+btn.MouseButton1Click:connect(function()
+	game.Workspace.resources.events.createItemInWorld:FireServer(49,box.Text,Game.Workspace[People].Torso.CFrame,2000000000)
+end)
+          end)
+
+
+          FeaturesSelect:NewButton("Base", "Don't use any type of healing item as it will reset your health to 100",function(bool)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1450.50415, 13.8982525, 2835.93677, -0.999961615, 0, 0.0088047618, 0, 1, 0, -0.0088047618, 0, -0.999961615), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1441.77551, 13.8984308, 2835.88696, -0.999987841, 0, -0.00500666164, 0, 1, 0, 0.00500666164, 0, -0.999987841), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1433.46252, 13.898488, 2835.96606, -0.999961615, 0, -0.0088047618, 0, 1, 0, 0.0088047618, 0, -0.999961615), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1424.79041, 13.8984337, 2836.10059, -0.999424934, 0, -0.0339196771, 0, 1, 0, 0.0339196771, 0, -0.999424934), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1416.09534, 13.8984299, 2836.3252, -0.999993086, 0, -0.00379816256, 0, 1, 0, 0.00379816256, 0, -0.999993086), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1406.89124, 13.8984327, 2836.3457, -0.999996901, 0, -0.00250333641, 0, 1, 0, 0.00250333641, 0, -0.999996901), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1398.02661, 13.8984318, 2836.37769, -0.999996901, 0, -0.00250333641, 0, 1, 0, 0.00250333641, 0, -0.999996901), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1388.8916, 13.8984308, 2836.44849, -0.999886274, 0, -0.0151059246, 0, 1, 0, 0.0151059246, 0, -0.999886274), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1380.36462, 13.8989182, 2836.52246, -0.999929428, 5.1415293e-07, 0.0119122295, -5.1415293e-07, 1, -8.63204987e-05, -0.0119122295, -8.63204987e-05, -0.999929428), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1371.08948, 13.8984308, 2836.69287, -0.999961615, 0, 0.0088047618, 0, 1, 0, -0.0088047618, 0, -0.999961615), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1361.30566, 13.8984308, 2836.71631, -0.999886274, 0, -0.0151059246, 0, 1, 0, 0.0151059246, 0, -0.999886274), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1352.37366, 13.8986883, 2836.88647, -0.999887228, -6.48279638e-07, -0.0150196068, 6.48279638e-07, 1, -8.63195819e-05, 0.0150196068, -8.63195819e-05, -0.999887228), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1342.5282, 13.8984337, 2836.9939, -0.999821663, 0, -0.0189036801, 0, 1, 0, 0.0189036801, 0, -0.999821663), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1332.87585, 13.8984308, 2837.16992, -0.999773026, 0, -0.0213203281, 0, 1, 0, 0.0213203281, 0, -0.999773026), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1323.81165, 13.8984299, 2837.36914, -0.99977088, 0, -0.0214066338, 0, 1, 0, 0.0214066338, 0, -0.99977088), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1314.41357, 13.8950071, 2837.38599, -1, 0, 0, 0, 1, 0, 0, 0, -1), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1304.77307, 13.8984308, 2837.37646, -0.99998045, 0, -0.00630147709, 0, 1, 0, 0.00630147709, 0, -0.99998045), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1295.10864, 13.8984308, 2837.44702, -0.99998045, 0, -0.00630147709, 0, 1, 0, 0.00630147709, 0, -0.99998045), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1285.08667, 13.8979406, 2837.52539, -0.996722341, 3.49474931e-06, -0.0809036791, -3.49474931e-06, 1, 8.62512607e-05, 0.0809036791, 8.62512607e-05, -0.996722341), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1275.55579, 13.8984308, 2837.79761, -0.99961853, 0, -0.0276204105, 0, 1, 0, 0.0276204105, 0, -0.99961853), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1257.81067, 13.8984337, 2838.69067, -0.999336481, 0, -0.0364218466, 0, 1, 0, 0.0364218466, 0, -0.999336481), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1266.23376, 13.8984346, 2838.37109, -0.999141574, 0, -0.0414256752, 0, 1, 0, 0.0414256752, 0, -0.999141574), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1248.40637, 13.8966961, 2838.7959, -0.999465227, 0, -0.0327116735, 0, 1, 0, 0.0327116735, 0, -0.999465227), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1238.698, 13.8984299, 2839.16724, -0.999714136, 0, -0.0239094887, 0, 1, 0, 0.0239094887, 0, -0.999714136), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1228.74976, 13.8982677, 2839.11792, -1, 0, 0, 0, 1, 0, 0, 0, -1), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1219.53186, 13.8984308, 2839.14917, -0.998473883, 0, 0.0552250072, 0, 1, 0, -0.0552250072, 0, -0.998473883), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1210.31384, 13.8977175, 2838.24731, -0.99089849, -1.16466817e-05, 0.134613976, 1.16466817e-05, 1, 0.000172250759, -0.134613976, 0.000172250759, -0.99089849), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1200.724, 13.8984337, 2837.01831, -0.992582321, 0, 0.121574283, 0, 1, 0, -0.121574283, 0, -0.992582321), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1191.49597, 13.8984327, 2836.64453, -0.999424934, 0, 0.0339196771, 0, 1, 0, -0.0339196771, 0, -0.999424934), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1182.70056, 13.8984108, 2835.98291, -0.995797992, 0, 0.0915776193, 0, 1, 0, -0.0915776193, 0, -0.995797992), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1173.53271, 13.8978834, 2835.13843, -0.995710492, -3.99772443e-06, 0.0925241411, 3.99772443e-06, 1, 8.62293964e-05, -0.0925241411, 8.62293964e-05, -0.995710492), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1163.86499, 13.8984308, 2834.05127, -0.989384413, 0, 0.145324349, 0, 1, 0, -0.145324349, 0, -0.989384413), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1153.74365, 13.8982763, 2833.33154, -0.998401523, 0, 0.0565183163, 0, 1, 0, -0.0565183163, 0, -0.998401523), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1143.6322, 13.8984327, 2832.80005, -0.999087214, 0, 0.0427196436, 0, 1, 0, -0.0427196436, 0, -0.999087214), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1133.96899, 13.8984327, 2832.37622, -0.999087214, 0, 0.0427196436, 0, 1, 0, -0.0427196436, 0, -0.999087214), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1124.60486, 13.8984308, 2831.92236, -0.998672247, 0, 0.0515171327, 0, 1, 0, -0.0515171327, 0, -0.998672247), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1114.81311, 13.8977747, 2831.83594, -0.999511719, -1.34871971e-06, 0.0312447548, 1.34871971e-06, 1, 8.63114765e-05, -0.0312447548, 8.63114765e-05, -0.999511719), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1094.99365, 13.8984318, 2831.11157, -0.999336481, 0, 0.0364218466, 0, 1, 0, -0.0364218466, 0, -0.999336481), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1104.99048, 13.8984308, 2831.47778, -0.999336481, 0, 0.0364218466, 0, 1, 0, -0.0364218466, 0, -0.999336481), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1084.92615, 13.8984308, 2830.63794, -0.998609066, 0, 0.0527244061, 0, 1, 0, -0.0527244061, 0, -0.998609066), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1075.54578, 13.8984308, 2829.90991, -0.996348381, 0, 0.0853807405, 0, 1, 0, -0.0853807405, 0, -0.996348381), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1066.40808, 13.8984118, 2828.78833, -0.981322527, 0, 0.1923704, 0, 1, 0, -0.1923704, 0, -0.981322527), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1057.03052, 13.8984318, 2826.68799, -0.969204426, 0, 0.246257693, 0, 1, 0, -0.246257693, 0, -0.969204426), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1048.51196, 13.9007282, 2824.00269, -0.931207061, 9.6057156e-05, 0.364490598, -9.6057156e-05, 0.999999881, -0.000508946599, -0.364490598, -0.000508946599, -0.931206942), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1039.88306, 13.8984318, 2820.15332, -0.854928374, 0, 0.518745959, 0, 1, 0, -0.518745959, 0, -0.854928374), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1032.00964, 13.8959684, 2814.54492, -0.811920881, 5.29428471e-05, 0.58376801, -5.29428471e-05, 1, -0.000164325975, -0.58376801, -0.000164325975, -0.811920881), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1023.65851, 13.8984556, 2808.80347, -0.806051731, 0, 0.591845036, 0, 1, 0, -0.591845036, 0, -0.806051731), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1015.87262, 13.8984499, 2803.01196, -0.784744382, 0, 0.619819582, 0, 1, 0, -0.619819582, 0, -0.784744382), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1007.62189, 13.8983564, 2797.41357, -0.840936303, 0, 0.541134298, 0, 1, 0, -0.541134298, 0, -0.840936303), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(999.391174, 13.8984318, 2792.16138, -0.828480721, 0, 0.560017526, 0, 1, 0, -0.560017526, 0, -0.828480721), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(991.439575, 13.8984308, 2786.6228, -0.825689197, 0, 0.564126015, 0, 1, 0, -0.564126015, 0, -0.825689197), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(983.608032, 13.8984365, 2781.27661, -0.816341519, 0, 0.577569544, 0, 1, 0, -0.577569544, 0, -0.816341519), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(975.869751, 13.8980427, 2775.9873, -0.793267488, 0, 0.608873487, 0, 1, 0, -0.608873487, 0, -0.793267488), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(968.801086, 13.8928595, 2770.08472, -0.692081094, -3.38707468e-05, 0.721819818, 3.38707468e-05, 1, 7.93993895e-05, -0.721819818, 7.93993895e-05, -0.692081094), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(962.258301, 13.8981438, 2762.65894, -0.678176045, -3.46270717e-05, 0.73489958, 3.46270717e-05, 1, 7.90724735e-05, -0.73489958, 7.90724735e-05, -0.678176045), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(955.792725, 13.8984308, 2755.07397, -0.651825786, 0, 0.758368671, 0, 1, 0, -0.758368671, 0, -0.651825786), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(949.907532, 13.8982286, 2747.16406, -0.546393633, 0, 0.837528467, 0, 1, 0, -0.837528467, 0, -0.546393633), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(945.087646, 13.897769, 2739.24316, -0.440905333, -4.56403759e-05, 0.897553563, 4.56403759e-05, 1, 7.3269679e-05, -0.897553563, 7.3269679e-05, -0.440905333), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(940.794983, 13.8984299, 2730.40454, -0.399453044, 0, 0.91675365, 0, 1, 0, -0.91675365, 0, -0.399453044), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(937.1427, 13.8974495, 2721.65356, -0.36023438, -0.000168833416, 0.932861805, 2.64552291e-05, 1, 0.000191200335, -0.932861805, 9.35560238e-05, -0.36023438), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(933.52771, 13.8983202, 2712.65869, -0.329306602, 0, 0.944223046, 0, 1, 0, -0.944223046, 0, -0.329306602), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(930.953918, 13.8984308, 2703.69238, -0.25360024, 0, 0.967309117, 0, 1, 0, -0.967309117, 0, -0.25360024), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(928.531982, 13.8984308, 2693.92529, -0.202335119, 0, 0.979316592, 0, 1, 0, -0.979316592, 0, -0.202335119), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(926.712402, 13.8984346, 2684.64087, -0.188538194, 0, 0.982065856, 0, 1, 0, -0.982065856, 0, -0.188538194), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(919.856506, 13.8984308, 2676.5127, -0.899411082, 0, 0.437104464, 0, 1, 0, -0.437104464, 0, -0.899411082), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(911.05011, 14.0031633, 2671.83838, -0.855578661, 0, 0.517672777, 0, 1, 0, -0.517672777, 0, -0.855578661), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(903.164795, 14.6290359, 2666.38086, -0.761075139, -5.9671529e-05, 0.64866364, 5.9671529e-05, 1, 0.000162003911, -0.64866364, 0.000162003911, -0.761075139), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(896.456177, 15.3909969, 2659.83081, -0.656563997, 0, 0.754270494, 0, 1, 0, -0.754270494, 0, -0.656563997), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(890.004272, 16.2841339, 2652.55542, -0.623165965, -0.000380350277, 0.782089472, 6.92875328e-05, 0.999999821, 0.000541533751, -0.782089591, 0.000391654467, -0.623165846), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(883.783081, 17.2595921, 2644.67188, -0.588767052, 0, 0.80830282, 0, 1, 0, -0.80830282, 0, -0.588767052), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(877.887085, 18.2676754, 2636.45361, -0.550004125, -4.09459353e-05, 0.835161924, 4.09459353e-05, 1, 7.59928953e-05, -0.835161924, 7.59928953e-05, -0.550004125), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(872.904236, 19.3137798, 2627.83472, -0.479202867, 4.40494841e-05, 0.877704144, -4.40494841e-05, 1, -7.4237003e-05, -0.877704144, -7.4237003e-05, -0.479202867), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(868.027771, 20.3647823, 2619.58228, -0.4949404, 0, 0.8689273, 0, 1, 0, -0.8689273, 0, -0.4949404), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(863.240234, 21.4387512, 2610.96899, -0.475142479, 0, 0.87990886, 0, 1, 0, -0.87990886, 0, -0.475142479), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(854.168152, 23.606926, 2593.60742, -0.440540195, 0, 0.897732854, 0, 1, 0, -0.897732854, 0, -0.440540195), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(858.599731, 22.52071, 2602.35254, -0.467419863, 0, 0.884035408, 0, 1, 0, -0.884035408, 0, -0.467419863), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(849.640381, 24.7696896, 2584.36719, -0.435965419, 0, 0.899963439, 0, 1, 0, -0.899963439, 0, -0.435965419), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(845.491211, 25.8575382, 2575.69849, -0.426944733, 0, 0.904277742, 0, 1, 0, -0.904277742, 0, -0.426944733), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(841.110657, 26.10116, 2566.34326, -0.422407389, 0, 0.906406045, 0, 1, 0, -0.906406045, 0, -0.422407389), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(837.149353, 26.1007576, 2557.45703, -0.387378216, -4.77752255e-05, 0.921920836, 4.77752255e-05, 1, 7.18958763e-05, -0.921920836, 7.18958763e-05, -0.387378216), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(830.094482, 26.1011581, 2549.83301, 0.0370067954, -0, -0.999315083, 0, 1, -0, 0.999315083, 0, 0.0370067954), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(834.015015, 26.1000443, 2538.74658, -0.11157608, 0, 0.993755937, 0, 1, 0, -0.993755937, 0, -0.11157608), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(827.766541, 26.101162, 2529.65454, 0.0223363042, -0, -0.999750495, 0, 1, -0, 0.999750495, 0, 0.0223363042), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(827.345886, 26.1011581, 2519.8689, -0.106506109, 0, -0.994312167, 0, 1, 0, 0.994312167, 0, -0.106506109), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(829.22467, 26.1011581, 2509.89868, -0.362185836, 0, -0.932105899, 0, 1, 0, 0.932105899, 0, -0.362185836), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(832.838196, 26.1011581, 2501.32422, -0.561638594, 0, -0.827382743, 0, 1, 0, 0.827382743, 0, -0.561638594), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(839.021667, 26.1011848, 2493.43896, -0.695728302, 0, -0.718305171, 0, 1, 0, 0.718305171, 0, -0.695728302), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(844.178406, 26.1011639, 2486.61743, -0.573758483, 0, -0.819024682, 0, 1, 0, 0.819024682, 0, -0.573758483), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(848.712646, 26.1011562, 2478.52051, -0.381247759, 0, -0.924472868, 0, 1, 0, 0.924472868, 0, -0.381247759), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(851.427795, 26.1011639, 2471.5354, -0.236416578, 0, -0.971651793, 0, 1, 0, 0.971651793, 0, -0.236416578), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(852.886292, 26.1011562, 2463.17822, -0.141354561, 0, -0.989959061, 0, 1, 0, 0.989959061, 0, -0.141354561), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(854.407104, 26.1010914, 2454.37866, -0.141241431, 0, -0.989975154, 0, 1, 0, 0.989975154, 0, -0.141241431), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(856.501465, 26.1011581, 2445.36108, -0.32088232, 0, -0.947119057, 0, 1, 0, 0.947119057, 0, -0.32088232), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(859.77002, 26.10116, 2436.44482, -0.509667039, 0, -0.860372126, 0, 1, 0, 0.860372126, 0, -0.509667039), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(869.164307, 26.1012611, 2420.9873, -0.676511765, 0, -0.736431837, 0, 1, 0, 0.736431837, 0, -0.676511765), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(864.200562, 26.1011581, 2428.39478, -0.576146007, 0, -0.817346811, 0, 1, 0, 0.817346811, 0, -0.576146007), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(869.164307, 26.1012611, 2420.9873, -0.676511765, 0, -0.736431837, 0, 1, 0, 0.736431837, 0, -0.676511765), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(879.981323, 26.10116, 2406.78491, -0.595161438, 0, -0.803606212, 0, 1, 0, 0.803606212, 0, -0.595161438), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(885.639893, 26.1011581, 2399.29858, -0.618430018, 0, -0.785839856, 0, 1, 0, 0.785839856, 0, -0.618430018), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(891.026001, 26.1011581, 2392.50391, -0.669952154, 0, -0.742404282, 0, 1, 0, 0.742404282, 0, -0.669952154), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(897.543335, 26.1011581, 2385.33374, -0.765647888, 0, -0.643260002, 0, 1, 0, 0.643260002, 0, -0.765647888), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(904.903137, 26.1011581, 2379.51172, -0.860454559, 0, -0.509527326, 0, 1, 0, 0.509527326, 0, -0.860454559), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(913.509277, 26.1011639, 2374.9541, -0.93219614, 0, -0.361953676, 0, 1, 0, 0.361953676, 0, -0.93219614), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(921.307983, 26.101162, 2371.19458, -0.87362659, 0, -0.486597061, 0, 1, 0, 0.486597061, 0, -0.87362659), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(929.191345, 26.101162, 2366.50586, -0.909335852, 0, -0.416062772, 0, 1, 0, 0.416062772, 0, -0.909335852), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(936.730713, 26.1011581, 2362.7063, -0.901911736, 0, -0.431920439, 0, 1, 0, 0.431920439, 0, -0.901911736), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(944.709229, 26.1011562, 2358.9519, -0.911782026, 0, -0.410674602, 0, 1, 0, 0.410674602, 0, -0.911782026), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(952.223999, 26.1011581, 2355.08936, -0.890187263, 0, -0.455594897, 0, 1, 0, 0.455594897, 0, -0.890187263), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(960.803711, 26.1011581, 2351.62622, -0.98281014, 0, -0.18462114, 0, 1, 0, 0.18462114, 0, -0.98281014), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(968.123962, 26.1011581, 2348.95703, -0.92002821, 0, -0.391852528, 0, 1, 0, 0.391852528, 0, -0.92002821), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(975.284607, 26.1014366, 2344.66797, -0.867966294, -2.21793598e-05, -0.496623158, 2.21793598e-05, 1, -8.34240127e-05, 0.496623158, -8.34240127e-05, -0.867966294), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(990.166443, 26.1011581, 2336.49902, -0.875011444, 0, -0.484102219, 0, 1, 0, 0.484102219, 0, -0.875011444), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(983.477478, 26.1011581, 2340.14819, -0.904418945, 0, -0.426645577, 0, 1, 0, 0.426645577, 0, -0.904418945), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(998.554504, 26.1011581, 2333.22632, -0.950879335, 0, -0.309562266, 0, 1, 0, 0.309562266, 0, -0.950879335), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1005.47205, 26.101162, 2329.80322, -0.899333715, 0, -0.437263817, 0, 1, 0, 0.437263817, 0, -0.899333715), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1020.35907, 26.1011581, 2321.88501, -0.89415586, 0, -0.447756201, 0, 1, 0, 0.447756201, 0, -0.89415586), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1028.09387, 26.1014614, 2318.19409, -0.943853259, -1.44633414e-05, -0.330364853, 1.44633414e-05, 1, -8.51017103e-05, 0.330364853, -8.51017103e-05, -0.943853259), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1035.50891, 26.1011581, 2315.05493, -0.901911736, 0, -0.431920439, 0, 1, 0, 0.431920439, 0, -0.901911736), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1043.10828, 26.101162, 2311.74316, -0.899372101, 0, -0.437184066, 0, 1, 0, 0.437184066, 0, -0.899372101), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1051.04919, 26.10116, 2308.13379, -0.949982285, 0, -0.312303871, 0, 1, 0, 0.312303871, 0, -0.949982285), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1058.72034, 26.101162, 2304.81909, -0.927869558, 0, -0.372904867, 0, 1, 0, 0.372904867, 0, -0.927869558), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1067.38416, 26.101162, 2301.3335, -0.927869558, 0, -0.372904867, 0, 1, 0, 0.372904867, 0, -0.927869558), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1075.97388, 26.10116, 2297.70435, -0.923443079, 0, -0.383735478, 0, 1, 0, 0.383735478, 0, -0.923443079), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1083.95898, 26.1011581, 2294.37817, -0.924553633, 0, -0.381051868, 0, 1, 0, 0.381051868, 0, -0.924553633), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1092.42017, 26.10116, 2290.53809, -0.947186708, 0, -0.320682555, 0, 1, 0, 0.320682555, 0, -0.947186708), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1101.18079, 26.10116, 2287.5437, -0.943360806, 0, -0.331769556, 0, 1, 0, 0.331769556, 0, -0.943360806), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1109.36951, 26.1011581, 2284.00195, -0.95446384, 0, -0.298326463, 0, 1, 0, 0.298326463, 0, -0.95446384), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1118.33655, 26.101162, 2281.94165, -0.998396754, 0, -0.0566045381, 0, 1, 0, 0.0566045381, 0, -0.998396754), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1126.15076, 26.101162, 2280.6228, -0.975716352, 0, -0.219038099, 0, 1, 0, 0.219038099, 0, -0.975716352), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1134.31824, 26.101162, 2278.25659, -0.975716352, 0, -0.219038099, 0, 1, 0, 0.219038099, 0, -0.975716352), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1142.16211, 26.1011581, 2275.73218, -0.937400937, 0, -0.348252475, 0, 1, 0, 0.348252475, 0, -0.937400937), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1149.95764, 26.101162, 2272.40552, -0.949982285, 0, -0.312303871, 0, 1, 0, 0.312303871, 0, -0.949982285), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1158.00464, 26.1011581, 2269.61694, -0.93324101, 0, -0.359250844, 0, 1, 0, 0.359250844, 0, -0.93324101), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1166.62817, 26.1011581, 2266.82788, -0.981704116, 0, -0.190412611, 0, 1, 0, 0.190412611, 0, -0.981704116), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1174.37634, 26.10116, 2265.08765, -0.969589114, 0, -0.24473983, 0, 1, 0, 0.24473983, 0, -0.969589114), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1182.2876, 26.1011581, 2262.49609, -0.962796569, 0, -0.270228624, 0, 1, 0, 0.270228624, 0, -0.962796569), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1190.64124, 26.1011581, 2259.73511, -0.973737478, 0, -0.227675274, 0, 1, 0, 0.227675274, 0, -0.973737478), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1199.0918, 26.1011581, 2257.59814, -0.98281014, 0, -0.18462114, 0, 1, 0, 0.18462114, 0, -0.98281014), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1207.24036, 26.1011581, 2255.7561, -0.970308661, 0, -0.241871461, 0, 1, 0, 0.241871461, 0, -0.970308661), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1215.9043, 26.1011639, 2253.75122, -0.983880997, 0, -0.178824782, 0, 1, 0, 0.178824782, 0, -0.983880997), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1224.9989, 26.1011581, 2252.1687, -0.993017316, 0, -0.117968373, 0, 1, 0, 0.117968373, 0, -0.993017316), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1232.94739, 26.101162, 2250.30176, -0.956192613, 0, -0.292738497, 0, 1, 0, 0.292738497, 0, -0.956192613), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1241.16833, 26.101162, 2247.78198, -0.956192613, 0, -0.292738497, 0, 1, 0, 0.292738497, 0, -0.956192613), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1249.01306, 26.1011581, 2244.67456, -0.927869558, 0, -0.372904867, 0, 1, 0, 0.372904867, 0, -0.927869558), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1012.68573, 26.1011639, 2325.92163, -0.882031202, 0, -0.47119087, 0, 1, 0, 0.47119087, 0, -0.882031202), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1257.30652, 26.1010838, 2241.99121, -0.968860745, 0, -0.247606561, 0, 1, 0, 0.247606561, 0, -0.968860745), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1265.71704, 26.1011581, 2241.14746, -0.990781665, 0, -0.135471269, 0, 1, 0, 0.135471269, 0, -0.990781665), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1274.30212, 26.0988121, 2239.96436, -0.990793347, 0, -0.135385528, 0, 1, 0, 0.135385528, 0, -0.990793347), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1282.36084, 26.1011581, 2239.05566, -0.991561055, 0, -0.129640266, 0, 1, 0, 0.129640266, 0, -0.991561055), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1291.32288, 26.1011562, 2237.95361, -0.995090127, 0, -0.0989759713, 0, 1, 0, 0.0989759713, 0, -0.995090127), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1299.94788, 26.1011581, 2236.7998, -0.992842913, 0, -0.119428046, 0, 1, 0, 0.119428046, 0, -0.992842913), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1308.24817, 26.1011581, 2235.64624, -0.980290771, 0, -0.197559938, 0, 1, 0, 0.197559938, 0, -0.980290771), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1316.71899, 26.1011581, 2233.87573, -0.965522885, 0, -0.260318398, 0, 1, 0, 0.260318398, 0, -0.965522885), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1325.20313, 26.0973911, 2231.66724, -0.995726824, 0.000282630906, -0.0923520029, 0.000234747611, 0.999999821, 0.000529349316, 0.092352137, 0.00050540769, -0.995726705), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1332.61548, 26.1011581, 2229.70874, -0.970664859, 0, -0.240436628, 0, 1, 0, 0.240436628, 0, -0.970664859), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1341.14136, 26.1011581, 2227.31421, -0.960792065, 0, -0.277270198, 0, 1, 0, 0.277270198, 0, -0.960792065), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1349.49927, 26.1011581, 2224.72729, -0.953125596, 0, -0.302574843, 0, 1, 0, 0.302574843, 0, -0.953125596), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1357.79456, 26.10116, 2222.34985, -0.980290771, 0, -0.197559938, 0, 1, 0, 0.197559938, 0, -0.980290771), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1366.36255, 26.1011581, 2220.64404, -0.983080745, 0, -0.183172479, 0, 1, 0, 0.183172479, 0, -0.983080745), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1375.17688, 26.1011581, 2219.77148, -0.999665022, 0, -0.0258944388, 0, 1, 0, 0.0258944388, 0, -0.999665022), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1384.11743, 26.1011581, 2219.54053, -0.999900103, 0, -0.014156458, 0, 1, 0, 0.014156458, 0, -0.999900103), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1392.88281, 26.1011581, 2220.19971, -0.993742585, 0, 0.111698195, 0, 1, 0, -0.111698195, 0, -0.993742585), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1401.29419, 26.10116, 2221.2019, -0.997488856, 0, 0.0708258599, 0, 1, 0, -0.0708258599, 0, -0.997488856), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1410.03223, 26.1011581, 2221.86328, -0.994382024, 0, 0.105854467, 0, 1, 0, -0.105854467, 0, -0.994382024), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1418.90588, 26.101162, 2223.35864, -0.975811362, 0, 0.218614385, 0, 1, 0, -0.218614385, 0, -0.975811362), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1426.77478, 26.1011581, 2225.05273, -0.987861514, 0, 0.155337691, 0, 1, 0, -0.155337691, 0, -0.987861514), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1434.99988, 26.1011581, 2226.17578, -0.990851641, 0, 0.134956881, 0, 1, 0, -0.134956881, 0, -0.990851641), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1443.58533, 26.1011581, 2227.34961, -0.990851641, 0, 0.134956881, 0, 1, 0, -0.134956881, 0, -0.990851641), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1451.9884, 26.1011581, 2228.802, -0.986943603, 0, 0.161066487, 0, 1, 0, -0.161066487, 0, -0.986943603), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1460.16431, 26.1011581, 2230.05225, -0.992718458, 0, 0.12045829, 0, 1, 0, -0.12045829, 0, -0.992718458), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1468.55005, 26.101162, 2231.02393, -0.993742585, 0, 0.111698195, 0, 1, 0, -0.111698195, 0, -0.993742585), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1476.67407, 26.10116, 2231.87793, -0.991244197, 0, 0.132041663, 0, 1, 0, -0.132041663, 0, -0.991244197), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1484.85339, 26.1011581, 2232.58252, -0.998873353, 0, 0.0474637412, 0, 1, 0, -0.0474637412, 0, -0.998873353), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1493.15454, 26.1011581, 2232.8064, -0.999134421, 0, 0.0415982045, 0, 1, 0, -0.0415982045, 0, -0.999134421), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1501.58789, 26.0954838, 2233.18213, -0.999134421, 0, 0.0415982045, 0, 1, 0, -0.0415982045, 0, -0.999134421), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1510.40442, 26.1011581, 2233.68652, -0.994688511, 0, 0.102931529, 0, 1, 0, -0.102931529, 0, -0.994688511), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1519.48499, 26.1011581, 2234.65869, -0.985481977, 0, 0.169780061, 0, 1, 0, -0.169780061, 0, -0.985481977), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1527.99817, 26.101162, 2236.10425, -0.980084658, 0, 0.198580354, 0, 1, 0, -0.198580354, 0, -0.980084658), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1536.45325, 26.1011581, 2237.84912, -0.978307009, 0, 0.207162336, 0, 1, 0, -0.207162336, 0, -0.978307009), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1544.54077, 26.1011581, 2239.59497, -0.975811362, 0, 0.218614385, 0, 1, 0, -0.218614385, 0, -0.975811362), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1552.5918, 26.1011581, 2242.48267, -0.96291399, 0, 0.269809097, 0, 1, 0, -0.269809097, 0, -0.96291399), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1561.04932, 26.1006145, 2245.02173, -0.93958056, 0, 0.342327744, 0, 1, 0, -0.342327744, 0, -0.93958056), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1569.38904, 26.1011581, 2249.59741, -0.848488331, 0, 0.529214025, 0, 1, 0, -0.529214025, 0, -0.848488331), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1576.96753, 26.1011562, 2255.17139, -0.742776632, 0, 0.669539452, 0, 1, 0, -0.669539452, 0, -0.742776632), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1583.33887, 26.1011581, 2260.86377, -0.716765285, 0, 0.697314501, 0, 1, 0, -0.697314501, 0, -0.716765285), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1589.76685, 26.1011639, 2267.42896, -0.676789522, 0, 0.736176729, 0, 1, 0, -0.736176729, 0, -0.676789522), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1595.72827, 26.1011581, 2273.32544, -0.646039605, 0, 0.763304353, 0, 1, 0, -0.763304353, 0, -0.646039605), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1601.50342, 26.1011581, 2279.7688, -0.674634457, 0, 0.738152087, 0, 1, 0, -0.738152087, 0, -0.674634457), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1607.60291, 26.1011581, 2286.23706, -0.604812741, 0, 0.796368122, 0, 1, 0, -0.796368122, 0, -0.604812741), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1612.1991, 26.1011581, 2293.54932, -0.610166192, 0, 0.792273402, 0, 1, 0, -0.792273402, 0, -0.610166192), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1617.50439, 26.1011581, 2300.17603, -0.646039605, 0, 0.763304353, 0, 1, 0, -0.763304353, 0, -0.646039605), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1623.1604, 26.1011581, 2307.04907, -0.520124793, 0, 0.854090214, 0, 1, 0, -0.854090214, 0, -0.520124793), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1627.82593, 26.1011581, 2314.61987, -0.525101185, 0, 0.851039767, 0, 1, 0, -0.851039767, 0, -0.525101185), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1632.44043, 26.101162, 2322.08838, -0.522574067, 0, 0.852593899, 0, 1, 0, -0.852593899, 0, -0.522574067), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1636.04358, 26.1011581, 2330.05542, -0.384316921, 0, 0.923201263, 0, 1, 0, -0.923201263, 0, -0.384316921), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1638.77319, 26.1011581, 2337.92041, -0.4192487, 0, 0.907871425, 0, 1, 0, -0.907871425, 0, -0.4192487), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1641.9519, 26.101162, 2346.26782, -0.29611361, 0, 0.95515269, 0, 1, 0, -0.95515269, 0, -0.29611361), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1644.24146, 26.1011562, 2354.89868, -0.133077025, 0, 0.991105735, 0, 1, 0, -0.991105735, 0, -0.133077025), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1645.94019, 26.300209, 2363.69751, -0.11272645, 0, 0.993626237, 0, 1, 0, -0.993626237, 0, -0.11272645), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1647.24133, 26.5987797, 2372.38184, -0.136029482, 0, 0.990704775, 0, 1, 0, -0.990704775, 0, -0.136029482), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1648.14709, 26.5987816, 2381.06177, -0.0426292419, 0, 0.99909097, 0, 1, 0, -0.99909097, 0, -0.0426292419), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1648.53369, 26.5987797, 2389.36792, -0.0514478683, 0, 0.998675644, 0, 1, 0, -0.998675644, 0, -0.0514478683), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1648.97937, 26.5987778, 2398.06641, -0.0454938412, 0, 0.998964608, 0, 1, 0, -0.998964608, 0, -0.0454938412), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1648.71228, 26.5987778, 2406.82422, -0.0454938412, 0, 0.998964608, 0, 1, 0, -0.998964608, 0, -0.0454938412), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1648.37805, 26.5987797, 2415.58374, 0.0218533278, 0, 0.999761224, 0, 1, 0, -0.999761224, 0, 0.0218533278), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1648.16541, 26.5987816, 2431.8999, -0.0161705017, 0, 0.999869287, 0, 1, 0, -0.999869287, 0, -0.0161705017), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1647.73792, 26.5951653, 2440.92603, 0.0570278764, 0, 0.998372555, 0, 1, 0, -0.998372555, 0, 0.0570278764), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1647.2749, 26.5987816, 2449.65723, 0.095045507, 0, 0.995472908, 0, 1, 0, -0.995472908, 0, 0.095045507), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1646.49683, 26.4992561, 2458.16602, 0.0336497426, 0, 0.999433696, 0, 1, 0, -0.999433696, 0, 0.0336497426), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1646.99329, 26.5987816, 2466.20654, -0.0660157204, 0, 0.99781853, 0, 1, 0, -0.99781853, 0, -0.0660157204), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1647.17273, 26.5957813, 2475.09277, -0.00633788109, -6.0845141e-05, 0.999979913, 6.0845141e-05, 1, 6.12320073e-05, -0.999979913, 6.12320073e-05, -0.00633788109), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1646.94495, 26.5965481, 2484.0332, 0.0888800025, -0.000121956931, 0.99604249, 5.4305201e-06, 1, 0.000121956931, -0.99604249, -5.4305201e-06, 0.0888800025), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1646.70496, 26.4992561, 2492.18286, -0.0103497505, 0, 0.999946475, 0, 1, 0, -0.999946475, 0, -0.0103497505), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1646.79163, 26.4992599, 2500.30005, -0.0075545311, 0, 0.999971449, 0, 1, 0, -0.999971449, 0, -0.0075545311), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1646.87561, 26.5987797, 2508.59302, -0.0132622719, 0, 0.999912083, 0, 1, 0, -0.999912083, 0, -0.0132622719), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1648.22705, 26.5987797, 2423.6543, 0.00718963146, 0, 0.999974132, 0, 1, 0, -0.999974132, 0, 0.00718963146), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1646.68726, 26.4977493, 2518.56982, 0, 0, 1, 0, 1, -0, -1, 0, 0), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1646.72778, 26.4992447, 2528.25586, -0.0176231861, 0, 0.999844849, 0, 1, 0, -0.999844849, 0, -0.0176231861), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1646.88635, 26.5987797, 2537.64746, -0.0162914991, 0, 0.99986726, 0, 1, 0, -0.99986726, 0, -0.0162914991), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1647.04688, 26.5987816, 2547.37915, -0.0164124966, 0, 0.999865294, 0, 1, 0, -0.999865294, 0, -0.0164124966), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1647.22644, 26.5987835, 2557.51611, -0.0176231861, 0, 0.999844849, 0, 1, 0, -0.999844849, 0, -0.0176231861), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1647.39954, 26.5987854, 2566.97998, -0.0176231861, 0, 0.999844849, 0, 1, 0, -0.999844849, 0, -0.0176231861), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1647.58972, 25.894352, 2576.55298, -0.0338897705, 0, 0.99942559, 0, 1, 0, -0.99942559, 0, -0.0338897705), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1647.94897, 24.6375389, 2586.47412, -0.0340096951, 0, 0.999421537, 0, 1, 0, -0.999421537, 0, -0.0340096951), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1648.41443, 23.4570141, 2595.95703, -0.0515669584, 0, 0.998669684, 0, 1, 0, -0.998669684, 0, -0.0515669584), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1648.8562, 22.2886944, 2605.26196, -0.0602258444, 0, 0.9981848, 0, 1, 0, -0.9981848, 0, -0.0602258444), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1649.27954, 21.0630779, 2614.7937, -0.0239046812, 0, 0.999714196, 0, 1, 0, -0.999714196, 0, -0.0239046812), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1649.5686, 19.8358784, 2624.4895, -0.0177440643, 0, 0.999842584, 0, 1, 0, -0.999842584, 0, -0.0177440643), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1649.9231, 18.7228661, 2633.42896, -0.041434288, 0, 0.999141216, 0, 1, 0, -0.999141216, 0, -0.041434288), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1650.27271, 17.4503727, 2643.41699, -0.0277606249, 0, 0.999614775, 0, 1, 0, -0.999614775, 0, -0.0277606249), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1650.54578, 16.2067051, 2653.27954, -0.0287232399, 0, 0.999587417, 0, 1, 0, -0.999587417, 0, -0.0287232399), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1650.83557, 14.7329197, 2663.20557, -0.00146472454, 0, 0.999998987, 0, 1, 0, -0.999998987, 0, -0.00146472454), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1650.80994, 13.4046211, 2673.09717, 0.0445394516, 6.23833912e-05, 0.999007583, -6.23833912e-05, 1, -5.96640784e-05, -0.999007583, -5.96640784e-05, 0.0445394516), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1650.45032, 12.1849375, 2682.82813, 0.0301665068, 0, 0.999544919, 0, 1, 0, -0.999544919, 0, 0.0301665068), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1649.80188, 10.9515381, 2692.35376, 0.0790655017, 0, 0.996869445, 0, 1, 0, -0.996869445, 0, 0.0790655017), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1648.9668, 9.7031889, 2702.2356, 0.0803538561, 0, 0.996766388, 0, 1, 0, -0.996766388, 0, 0.0803538561), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1648.11707, 8.40038776, 2712.25317, 0.14225924, 0.000187003199, 0.989829421, -7.39417446e-05, 1, -0.000178297691, -0.989829421, -4.78252186e-05, 0.14225924), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1646.70325, 7.79716682, 2721.98438, 0.151505232, 0, 0.988456428, 0, 1, 0, -0.988456428, 0, 0.151505232), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1644.64001, 8.08051968, 2732.3418, 0.299489439, 0, 0.954099655, 0, 1, 0, -0.954099655, 0, 0.299489439), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1640.98962, 8.56467342, 2741.9436, 0.404079735, 0, 0.914723754, 0, 1, 0, -0.914723754, 0, 0.404079735), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1636.23645, 9.2114048, 2750.94141, 0.542851388, 0.000117087424, 0.839828789, -3.45472727e-05, 1, -0.000117087424, -0.839828789, 3.45472727e-05, 0.542851388), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1625.62061, 10.5501528, 2766.98901, 0.550577283, 0, 0.834784269, 0, 1, 0, -0.834784269, 0, 0.550577283), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1631.09595, 9.86491394, 2758.84058, 0.557912469, 0, 0.829899907, 0, 1, 0, -0.829899907, 0, 0.557912469), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1619.52002, 11.3598843, 2774.79175, 0.634470701, 0, 0.772947013, 0, 1, 0, -0.772947013, 0, 0.634470701), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1612.98279, 12.2131109, 2781.92432, 0.687593937, 0, 0.726095498, 0, 1, 0, -0.726095498, 0, 0.687593937), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1605.68555, 13.1877127, 2788.46167, 0.768064618, 0, 0.640372396, 0, 1, 0, -0.640372396, 0, 0.768064618), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1597.63184, 14.2303762, 2794.51318, 0.801672578, 0, 0.597763419, 0, 1, 0, -0.597763419, 0, 0.801672578), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1588.88208, 13.8983955, 2799.95801, 0.868320882, 0, 0.496002853, 0, 1, 0, -0.496002853, 0, 0.868320882), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1580.35791, 13.8984308, 2804.81812, 0.866453767, 0, 0.499257296, 0, 1, 0, -0.499257296, 0, 0.866453767), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1571.99768, 13.8984346, 2809.46606, 0.882031262, 0, 0.47119087, 0, 1, 0, -0.47119087, 0, 0.882031262), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1563.06238, 13.8984232, 2814.08984, 0.906408727, 0, 0.422401696, 0, 1, 0, -0.422401696, 0, 0.906408727), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1553.65466, 13.8984308, 2818.28052, 0.914730132, 0, 0.404065281, 0, 1, 0, -0.404065281, 0, 0.914730132), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1544.83264, 13.8981476, 2822.06812, 0.9396106, 0, 0.3422454, 0, 1, 0, -0.3422454, 0, 0.9396106), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1535.57227, 13.8984308, 2825.68066, 0.92508924, 0, 0.379749835, 0, 1, 0, -0.379749835, 0, 0.92508924), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1526.03467, 13.898428, 2829.16431, 0.938707232, 0, 0.344715357, 0, 1, 0, -0.344715357, 0, 0.938707232), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1516.76733, 13.9446726, 2832.53149, 0.9396106, 0, 0.3422454, 0, 1, 0, -0.3422454, 0, 0.9396106), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1507.34033, 13.7902241, 2835.948, 0.941721797, 0, 0.33639276, 0, 1, 0, -0.33639276, 0, 0.941721797), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1497.41418, 13.4184895, 2838.72583, 0.972212017, 0, 0.234102026, 0, 1, 0, -0.234102026, 0, 0.972212017), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1487.74634, 13.1832943, 2840.44873, 0.99804163, 2.70116516e-06, 0.0625528172, 2.70116516e-06, 1, -8.62797388e-05, -0.0625528172, 8.62797388e-05, 0.99804163), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1478.0188, 13.1084776, 2841.01929, 0.999238789, 0, 0.0390101261, 0, 1, 0, -0.0390101261, 0, 0.999238789), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1468.45166, 13.0810938, 2841.2168, 0.999808013, -8.45744296e-07, 0.0195941608, -8.45744296e-07, 1, 8.63178793e-05, -0.0195941608, -8.63178793e-05, 0.999808013), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(1459.14575, 13.1444578, 2840.71289, 0.998179615, -0, -0.0603116192, 0, 1, -0, 0.0603116192, 0, 0.998179615), 77)
+            game.Workspace.resources.events.placeStructure:FireServer("Spike Wall", CFrame.new(874.907776, 26.101366, 2413.86157, -0.598726511, 0, -0.800953567, 0, 1, 0, 0.800953567, 0, -0.598726511), 77)
+              end)
+
+              local TpTab = Window:NewTab("Teleports")
+              local FeaturesSBelect = TpTab:NewSection("TPs")
+
+              FeaturesSBelect:NewButton("tpeve", "nil",function()
+                local player = game:GetService("Players").LocalPlayer
+                player.Character.HumanoidRootPart.CFrame = CFrame.new(1098.39417, 4.20008135, 3575.33008, 0.965299487, -2.57752641e-09, 0.261145443, -6.54583232e-09, 1, 3.40661295e-08, -0.261145443, -3.45934339e-08, 0.965299487)
+                
+                  end)
+
+                  FeaturesSBelect:NewButton("Factory", "nil",function()
+                    local player = game:GetService("Players").LocalPlayer
+                    player.Character.HumanoidRootPart.CFrame = CFrame.new(-1461.14624, 4.69996834, 1798.47583, 0.499543548, -8.08713274e-09, 0.866288781, 8.57511822e-08, 1, -4.01128553e-08, -0.866288781, 9.43234042e-08, 0.499543548)
+                    
+                    
+                      end)
+
+                      FeaturesSBelect:NewButton("safezone", "nil",function()
+                        local player = game:GetService("Players").LocalPlayer
+                        player.Character.HumanoidRootPart.CFrame = CFrame.new(-218.343994, 3.69999933, 1668.97656, 0.495042384, 6.71595899e-08, 0.868868828, 2.48913086e-08, 1, -9.1477375e-08, -0.868868828, 6.69124631e-08, 0.495042384)
+                        
+                        
+                        
+                          end)
+
+                          
+                          FeaturesSBelect:NewButton("trenton", "nil",function()
+                        local player = game:GetService("Players").LocalPlayer
+                        player.Character.HumanoidRootPart.CFrame = CFrame.new(2559.01709, 34.8301926, 1989.13611, 0.633425772, -6.87484487e-08, -0.773803473, 7.64500641e-09, 1, -8.25867374e-08, 0.773803473, 4.63968348e-08, 0.633425772)
+                        
+                        
+                        
+                          end)
