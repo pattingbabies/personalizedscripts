@@ -246,10 +246,10 @@ game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
                     spawn(function()
                         while getgenv().upgend == true do
                             local args = {
-                                [1] = "Psychic"
+                                [1] = "EnduranceMultiplier"
                             }
                             
-                            game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
+                            game:GetService("ReplicatedStorage").Functions.Multiplier:InvokeServer(unpack(args))
                             wait()
                         end
                     end)
@@ -259,10 +259,10 @@ game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
                         spawn(function()
                             while getgenv().upgpsy == true do
                                 local args = {
-                                    [1] = "Psychic"
+                                    [1] = "PsychicMultiplier"
                                 }
                                 
-                                game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
+                                game:GetService("ReplicatedStorage").Functions.Multiplier:InvokeServer(unpack(args))
                                 wait()
                             end
                         end)
@@ -272,16 +272,14 @@ game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
                             spawn(function()
                                 while getgenv().upgspe == true do
                                     local args = {
-                                        [1] = "Psychic"
+                                        [1] = "SpeedMultiplier"
                                     }
                                     
-                                    game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
+                                    game:GetService("ReplicatedStorage").Functions.Multiplier:InvokeServer(unpack(args))
                                     wait()
                                 end
                             end)
                             end
-
-
 
 
 
