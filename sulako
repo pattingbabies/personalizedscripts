@@ -1,6 +1,10 @@
 getgenv().autostrength = false;
 getgenv().autoendurance = false;
 getgenv().autopsychic = false;
+getgenv().upgstr = false;
+getgenv().upgend = false;
+getgenv().upgpsy = false;
+getgenv().upgspe = false;
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
@@ -32,6 +36,42 @@ FeaturesSelect:NewToggle("Farm Strength", "Farms Strength",function(bool)
     psychic();
     end
   end)
+
+  local FeaturessSelect = MainTab:NewSection("Auto Upgrade")
+  FeaturessSelect:NewToggle("Auto Upgrade Strength", "Upgrades chosen power",function(bool)
+    getgenv().upgstr = bool
+    print('Auto Upgrade is is: ', bool);
+    if bool then
+    pks();
+    end
+  end)
+
+  FeaturessSelect:NewToggle("Auto Upgrade Strength", "Upgrades chosen power",function(bool)
+    getgenv().upgend = bool
+    print('Auto Upgrade is is: ', bool);
+    if bool then
+    lps();
+    end
+  end)
+
+
+  FeaturessSelect:NewToggle("Auto Upgrade Endurance", "Upgrades chosen power",function(bool)
+    getgenv().upgpsy = bool
+    print('Auto Upgrade is is: ', bool);
+    if bool then
+    rpk();
+    end
+  end)
+
+
+  FeaturessSelect:NewToggle("Auto Upgrade Speed", "Upgrades chosen power",function(bool)
+    getgenv().upgspe = bool
+    print('Auto Upgrade is is: ', bool);
+    if bool then
+    rkr();
+    end
+  end)
+
 
 
 local TabLocale = Window:NewTab("Teleports")
@@ -188,6 +228,58 @@ game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
                 end
             end)
             end
+
+            function pks()
+                spawn(function()
+                    while getgenv().upgstr == true do
+                            local args = {
+                                [1] = "StrengthMultiplier"
+                            }
+                            
+                            game:GetService("ReplicatedStorage").Functions.Multiplier:InvokeServer(unpack(args))
+                        wait()
+                    end
+                end)
+                end
+
+                function lps()
+                    spawn(function()
+                        while getgenv().upgend == true do
+                            local args = {
+                                [1] = "Psychic"
+                            }
+                            
+                            game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
+                            wait()
+                        end
+                    end)
+                    end
+
+                    function rpk()
+                        spawn(function()
+                            while getgenv().upgpsy == true do
+                                local args = {
+                                    [1] = "Psychic"
+                                }
+                                
+                                game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
+                                wait()
+                            end
+                        end)
+                        end
+
+                        function rkr()
+                            spawn(function()
+                                while getgenv().upgspe == true do
+                                    local args = {
+                                        [1] = "Psychic"
+                                    }
+                                    
+                                    game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
+                                    wait()
+                                end
+                            end)
+                            end
 
 
 
