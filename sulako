@@ -282,4 +282,8 @@ game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
                             end
 
 
-
+local VirtualUser=game:service'VirtualUser'
+game:service'Players'.LocalPlayer.Idled:connect(function()
+VirtualUser:CaptureController()
+VirtualUser:ClickButton2(Vector2.new())
+end)
