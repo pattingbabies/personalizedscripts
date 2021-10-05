@@ -1,0 +1,195 @@
+getgenv().autostrength = false;
+getgenv().autoendurance = false;
+getgenv().autopsychic = false;
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Smoofy's Despair", "DarkTheme")
+
+-- Main
+local MainTab = Window:NewTab("Main")
+local FeaturesSelect = MainTab:NewSection("Autofarm")
+FeaturesSelect:NewToggle("Farm Strength", "Farms Strength",function(bool)
+    getgenv().autostrength = bool
+    print('Auto collect Items is: ', bool);
+    if bool then
+    strength();
+    end
+  end)
+
+  FeaturesSelect:NewToggle("Farm Endurance", "Farms Endurance",function(bool)
+    getgenv().autoendurance = bool
+    print('Auto collect Items is: ', bool);
+    if bool then
+    endurance();
+    end
+  end)
+
+  FeaturesSelect:NewToggle("Farm Psychic", "Farms Psychic",function(bool)
+    getgenv().autopsychic = bool
+    print('Auto collect Items is: ', bool);
+    if bool then
+    psychic();
+    end
+  end)
+
+
+local TabLocale = Window:NewTab("Teleports")
+local Fortnite = TabLocale:NewSection("Training Locations")
+Fortnite:NewButton("Carrier", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"].Carrier.MeshPart.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Light House", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"].LightHouse.MeshPart.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Dock Warehouse", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"]["Dock Warehouse"].Part.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Rock", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"].Rock.MeshPart.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Crystal Training Area", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"]["Crystal Training Area"].Crystals.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Sewer", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"].Sewer.Pipe.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Toxic Factory", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"]["Toxic Factory"].Part.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Car", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"].Car.Wheels.FL.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Gym", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"].Gym.Clock.Part.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Library", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"].Library.Part.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Golden Tree", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"]["Golden Tree"].MeshPart.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Ambulance", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"].Ambulance.Part.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Forklift", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"].Forklift.MeshPart.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+  Fortnite:NewButton("Stone 5M", "Training Places Teleport", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Important Buildings (Training Areas)"].Model.MeshPart.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+  end)
+
+
+  function strength()
+    spawn(function()
+        while getgenv().autostrength == true do
+            
+local args = {
+    [1] = "Strength"
+}
+
+game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
+            wait()
+        end
+    end)
+    end
+
+    function endurance()
+        spawn(function()
+            while getgenv().autoendurance == true do
+                local args = {
+                    [1] = "Endurance"
+                }
+                
+                game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
+                wait()
+            end
+        end)
+        end
+
+        function psychic()
+            spawn(function()
+                while getgenv().autopsychic == true do
+                    local args = {
+                        [1] = "Psychic"
+                    }
+                    
+                    game:GetService("ReplicatedStorage").Events.Train:FireServer(unpack(args))
+                    wait()
+                end
+            end)
+            end
+
+
+
+
+
