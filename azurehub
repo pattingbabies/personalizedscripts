@@ -281,6 +281,14 @@ FunRSection:NewButton("Teleport To Water Bender Trainer 2", "Teleports you to Wa
     pl.CFrame = location
 end)
 
+FunRSection:NewButton("Teleport To Water Bender Trainer 3", "Teleports you to Water Bender Trainer 3", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").NPC["Water Bender Trainer 3"].Head.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
 local FunKKSection = FunTP:NewSection("Area Teleports")
 FunKKSection:NewButton("Water Tribe", "nil", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
