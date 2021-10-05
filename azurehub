@@ -1,3 +1,5 @@
+getgenv().automeditation = false;
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
 -- Theme
@@ -52,20 +54,28 @@ FunPSPection:NewButton("Get Rich", "nil", function()
 	game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Spin Result"):FireServer(unpack(args))	
 end)
 
+
+
+
 -- Farming Section
 
 local FunStab = Window:NewTab("Farming")
 local FunPSection = FunStab:NewSection("Auto Meditate")
 -- Auto meditate 
-FunPSection:NewToggle("Auto Meditate", "Automatically meditates for you", function(state)
-while true do
-    local args = {
-      [1] = "Complete"
-  }
-  
-  game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Create Key"):FireServer(unpack(args))
-wait()
+FunPSection:NewToggle("Auto Meditate", "Automatically meditates for you",function(bool)
+    getgenv().automeditation = bool
+    print('Auto Meditate is: ', bool);
+    if bool then
+    automed();
 end  
+end)
+
+FunPSection:NewButton("Teleport To Mat", "teleports u to meditation mat", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace")["Meditation Mat"].CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
 end)
 
 -- Panda Lily Quest, yen Section
@@ -347,6 +357,19 @@ FunKSKSection:NewButton("Water Tribe", "nil", function()
     wait(0.1)
     pl.CFrame = location
 end)
+
+function automed()
+    spawn(function()
+        while getgenv().automeditation == true do
+            local args = {
+                [1] = "Complete"
+            }
+            
+            game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Create Key"):FireServer(unpack(args))
+            wait()
+        end
+    end)
+    end
 
 -- Bypass bans, kicks etc
 
