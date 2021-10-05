@@ -54,6 +54,19 @@ FunPSPection:NewButton("Get Rich", "nil", function()
 	game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Spin Result"):FireServer(unpack(args))	
 end)
 
+local FunPSPPection = FunClaw:NewSection("Berries")
+FunPSPPection:NewButton("Collect All Berries", "nil", function()
+    local distance = 100000
+    local player = game.Players.LocalPlayer
+    for i,v in pairs(workspace:GetDescendants()) do
+      if v:IsA("ClickDetector") and pcall(function() return v.Parent.Position end) and player:DistanceFromCharacter(v.Parent.Position) <= distance then
+        fireclickdetector(v)
+      elseif v:IsA("ClickDetector") then
+        warn(v:GetFullName(), "parent doesnt have a position")
+      end
+    end
+end)
+
 
 
 
