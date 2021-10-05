@@ -15,6 +15,43 @@ FunPSection:NewButton("Get Vaan", "Gets the family name Vaan ingame", function()
 	game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Spin Result"):FireServer(unpack(args))	
 end)
 
+FunPSection:NewButton("Get Azulon", "Gets the family name Azulon ingame", function()
+    local args = {
+		[1] = "Family",
+		[2] = "Azulon"
+	}
+	
+	game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Spin Result"):FireServer(unpack(args))	
+end)
+
+local FunPSPection = FunClaw:NewSection("Get Traits (You need at least 1 spin!")
+FunPSPection:NewButton("Get Royal", "nil", function()
+    local args = {
+		[1] = "Trait",
+		[2] = "Royal"
+	}
+	
+	game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Spin Result"):FireServer(unpack(args))	
+end)
+
+FunPSPection:NewButton("Get Assassin", "nil", function()
+    local args = {
+		[1] = "Trait",
+		[2] = "Assassin"
+	}
+	
+	game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Spin Result"):FireServer(unpack(args))	
+end)
+
+FunPSPection:NewButton("Get Rich", "nil", function()
+    local args = {
+		[1] = "Trait",
+		[2] = "Rich"
+	}
+	
+	game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Spin Result"):FireServer(unpack(args))	
+end)
+
 -- Farming Section
 
 local FunStab = Window:NewTab("Farming")
@@ -221,10 +258,129 @@ FunRSection:NewButton("Teleport To Water Bender Trainer 2", "Teleports you to Wa
     pl.CFrame = location
 end)
 
+local FunKKSection = FunTP:NewSection("Area Teleports")
+FunKKSection:NewButton("Water Tribe", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Areas["Water Tribe"].CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
 
+FunKKSection:NewButton("Fire Nation", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Areas["The Fire Nation"].CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
 
+FunKKSection:NewButton("Earth Kingdom", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Areas["Earth Kingdom Docks"].CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
 
+FunKKSection:NewButton("Holonuk Temple", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Areas["Holonuk Temple"].CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
 
+FunKKSection:NewButton("Underground Village", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Areas["Underground Village"].CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+FunKKSection:NewButton("Wuushu Village", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Areas["Wuushu Village"].CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+FunKKSection:NewButton("Small Earth Village", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Areas["Small Earth Village"].CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+local FunKSKSection = FunTP:NewSection("Spawn Teleports")
+FunKSKSection:NewButton("Fire Nation", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Spawns.FireNation.Part.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+FunKSKSection:NewButton("Earth Kingdom", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Spawns.EarthKingdom.Part.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+FunKSKSection:NewButton("Air Temple", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Spawns.AirTemple.Part.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+FunKSKSection:NewButton("Water Tribe", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Map.Spawns.WaterTribe.Part.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+-- Bypass bans, kicks etc
+
+local OldNameCall 
+OldNameCall = hookmetamethod(game, "__namecall", function(self,...) 
+    local args = {...}
+    if tostring(self) == "Staff Remote" or tostring(self) == "Kick" or tostring(self) == "Ban" and getnamecallmethod() == "FireServer" then --Gets all stinky remote names and then when call on the next line what to do
+    return wait(99e9)--stops return any thingy sneaky
+
+        end
+
+    return OldNameCall(self,...)
+end)
+
+local mt = getrawmetatable(game)
+local backupnamecall = mt.__namecall
+local backupnewindex = mt.__newindex
+local backupindex = mt.__index
+local setreadonly = setreadonly or make_writeable
+local getnamecallmethod = getnamecallmethod or get_namecall_method
+local newcclosure = newcclosure or function(f) return f end
+setreadonly(mt, false)
+
+mt.__namecall = newcclosure(function(...)
+  local method = getnamecallmethod()
+  local args = {...}
+  if tostring(method) == "FireServer" and (tostring(args[1]) == "Ban") then
+
+  return backupnamecall(nil) -- or replace nil with unpack(args) and u can change args before they get sent to the server
+end
+  return backupnamecall(...)
+end)
+
+setreadonly(mt, false)
 
 
 -- anti mod
