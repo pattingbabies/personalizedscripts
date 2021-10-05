@@ -54,19 +54,6 @@ FunPSPection:NewButton("Get Rich", "nil", function()
 	game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Spin Result"):FireServer(unpack(args))	
 end)
 
-local FunPSPPection = FunClaw:NewSection("Berries")
-FunPSPPection:NewButton("Collect All Berries", "nil", function()
-    local distance = 100000
-    local player = game.Players.LocalPlayer
-    for i,v in pairs(workspace:GetDescendants()) do
-      if v:IsA("ClickDetector") and pcall(function() return v.Parent.Position end) and player:DistanceFromCharacter(v.Parent.Position) <= distance then
-        fireclickdetector(v)
-      elseif v:IsA("ClickDetector") then
-        warn(v:GetFullName(), "parent doesnt have a position")
-      end
-    end
-end)
-
 
 
 
@@ -89,6 +76,19 @@ FunPSection:NewButton("Teleport To Mat", "teleports u to meditation mat", functi
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
+end)
+
+local FunPSPection = FunStab:NewSection("Berries")
+FunPSPection:NewButton("Collect All Berries In Game", "nil", function()
+    local distance = 1000000
+    local player = game.Players.LocalPlayer
+    for i,v in pairs(workspace:GetDescendants()) do
+      if v:IsA("ClickDetector") and pcall(function() return v.Parent.Position end) and player:DistanceFromCharacter(v.Parent.Position) <= distance then
+        fireclickdetector(v)
+      elseif v:IsA("ClickDetector") then
+        warn(v:GetFullName(), "parent doesnt have a position")
+      end
+    end
 end)
 
 -- Panda Lily Quest, yen Section
