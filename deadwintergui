@@ -17,7 +17,7 @@ local Window = Library.CreateLib("Bloody Winter v2", "Ocean")
 
   local MainTab = Window:NewTab("Main")
 local FeaturesSelect = MainTab:NewSection("Features")
-FeaturesSelect:NewButton("Godmode(Don't use any type of healing items after executing!", "Don't use any type of healing item as it will reset your health to 100",function(bool)
+FeaturesSelect:NewButton("Godmode", "Don't use any type of healing item as it will reset your health to 100",function(bool)
 People = game.Players.LocalPlayer.Character
 game.Workspace.resources.events.humTakeDamage:FireServer(People.Humanoid, -9999999)
   end)
