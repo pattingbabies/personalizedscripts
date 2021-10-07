@@ -1,0 +1,31 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Silent UI", "BloodTheme")
+
+-- Main
+local MainTab = Window:NewTab("Main")
+local SpeedWalkSection = MainTab:NewSection("Game Mods")
+SpeedWalkSection:NewSlider("Walkspeed", "SliderInfo", 250, 15, function(s) -- 500 (MaxValue) | 0 (MinValue)
+  game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+
+local TeleportSection = MainTab:NewSection("EPIK")
+TeleportSection:NewButton("Collect All Items", "collects all items ingame at once", function()
+    for i,v in pairs(game:GetService("Workspace").CurrentMap.Loot:GetChildren()) do
+        if v.ClassName == "Model" and v:FindFirstChild("LootProxBlock") and v.LootProxBlock:FindFirstChild("LootProximityPrompt") then
+            fireproximityprompt(v.LootProxBlock.LootProximityPrompt)
+    end
+    end
+end)
+
+TeleportSection:NewButton("TP To Exit", "Teleports you to exit", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").CurrentMap.ExitDoor.Glow.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+
+end)
+
+
