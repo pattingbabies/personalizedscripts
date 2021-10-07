@@ -33,6 +33,34 @@ wait()
 end
 end)
 
+MobFarmSection:NewButton("Auto Defence", "Auto defence for you", function()
+    while true do
+    local args = {
+        [1] = "HealthUp",
+        [2] = {
+            [1] = 1
+        }
+    }
+    
+    game:GetService("ReplicatedStorage").REMOTE_EVENT:FireServer(unpack(args))
+    wait()
+    end
+    end)
+
+    MobFarmSection:NewButton("Auto Stamina", "Auto Stamina for you", function()
+        while true do
+            local args = {
+                [1] = "StaminaUp",
+                [2] = {
+                    [1] = 1
+                }
+            }
+            
+            game:GetService("ReplicatedStorage").REMOTE_EVENT:FireServer(unpack(args))
+        wait()
+        end
+        end)
+
 
 MobFarmSection:NewToggle("Start Mob Farm", "Toggles the autofarming of the mobs", function(v) -- CREATES THE START / STOP TOGGLE
     getgenv().autofarmmobs = v
@@ -122,3 +150,4 @@ for _,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do -- L
     for _,v2 in pairs(mobs) do if v2 == v.Name then insert = false end end -- CHECKS IF MOB IS ALREADY IN THE TABLE
     if insert then table.insert(mobs, v.Name) end -- IF THE MOB ISNT INSERTED THEN INSERT IT
 end
+
