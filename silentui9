@@ -1,0 +1,383 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Ghostopia", "BloodTheme")
+local MainTab = Window:NewTab("Resource TP")
+local WelpSection = MainTab:NewSection("Forage Patches")
+WelpSection:NewButton("Mushroom Circles", "Teleports you to Mushroom Circles", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.ForagePatches["rsc_for_fairycircleA02_t01"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+
+WelpSection:NewButton("Flower", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.ForagePatches["rsc_for_flower"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+WelpSection:NewButton("Herbs", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.ForagePatches["rsc_for_grass_1"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+WelpSection:NewButton("Glowing Spores", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.ForagePatches["rsc_for_glowshroom"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+
+local Whorerr = Window:NewTab("NPC TPs")
+local Horassss = Whorerr:NewSection("NPC TPs")
+Horassss:NewButton("Fir", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["ghost_rsc_wood_fir"].RootPart
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Flint", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["ghost_rsc_mine_flint"].RootPart
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Zane", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["npc_zombie_boy_01"]["Zombie-boy"]
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Zara", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["npc_zombie_girl_01"]["Zombie-girl"]
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Zooey", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["zombie_zooey"].Zooey
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Flick", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["ghost_rsc_fire_flick"].RootPart
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Floof", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["ghost_rsc_air_floof"].RootPart
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Mr Osseous", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["mr_osseous"].HumanoidRootPart
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Finn", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["ghost_rsc_fish_finn"].RootPart
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Lenora", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["vamp_lenora"].RootPart
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Lilith", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["vamp_lilith"].RootPart
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Luna", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels["vamp_luna"].RootPart
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horassss:NewButton("Zee", "Teleports you to an npc", function()
+    local object = game:GetService("Workspace").NpcModels.zee.Zee
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+local Whores = Window:NewTab("Shops")
+local Horasss = Whores:NewSection("Shops TPs")
+Horasss:NewButton("Furniture Shop", "Teleports you to a shop", function()
+    local object = game:GetService("Workspace").ShopParts.ShopPart
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+local Whoreb = Window:NewTab("Zones")
+local Horass = Whoreb:NewSection("Zones TPs")
+Horass:NewButton("Voids End", "Teleports you to a zone", function()
+    local object = game:GetService("Workspace").Zones["Void's End"].Faces.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horass:NewButton("Neverglades", "Teleports you to a zone", function()
+    local object = game:GetService("Workspace").Zones.Neverglades.Faces.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horass:NewButton("Mystic Forest", "Teleports you to a zone", function()
+    local object = game:GetService("Workspace").Zones["Mystic Forest"].Faces.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horass:NewButton("Downtown", "Teleports you to a zone", function()
+    local object = game:GetService("Workspace").Zones.Downtown.Faces.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horass:NewButton("Bridge of Souls", "Teleports you to a zone", function()
+    local object = game:GetService("Workspace").Zones["Bridge of Souls"].Faces.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horass:NewButton("Waterfall", "Teleports you to a zone", function()
+    local object = game:GetService("Workspace").Zones.Waterfall.Faces.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+
+local Whorea = Window:NewTab("Quests")
+local Horas = Whorea:NewSection("Quests")
+
+Horas:NewButton("Conjuring Circle Scope", "Teleports you to a quest", function()
+    local object = game:GetService("Workspace").Interactables.QuestSpecific.ConjuringCircleScope.Root
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horas:NewButton("Gloom Memory 1", "Teleports you to a quest", function()
+    local object = game:GetService("Workspace").Interactables.QuestSpecific["gloom_memory_1"].Root
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horas:NewButton("Gloom Memory 2", "Teleports you to a quest", function()
+    local object = game:GetService("Workspace").Interactables.QuestSpecific["gloom_memory_2"].Root
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horas:NewButton("Gloom Memory 2", "Teleports you to a quest", function()
+    local object = game:GetService("Workspace").Interactables.QuestSpecific["gloom_memory_3"].Root
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horas:NewButton("Gloom Memory 3", "Teleports you to a quest", function()
+    local object = game:GetService("Workspace").Interactables.QuestSpecific["gloom_memory_3"].Root
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horas:NewButton("Gloom Memory 4", "Teleports you to a quest", function()
+    local object = game:GetService("Workspace").Interactables.QuestSpecific["gloom_memory_4"].Root
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horas:NewButton("Sage Poem 1", "Teleports you to a quest", function()
+    local object = game:GetService("Workspace").Interactables.QuestSpecific["sage_poem_1"].Root
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horas:NewButton("Sage Poem 2", "Teleports you to a quest", function()
+    local object = game:GetService("Workspace").Interactables.QuestSpecific["sage_poem_2"].Root
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+Horas:NewButton("Sage Poem 3", "Teleports you to a quest", function()
+    local object = game:GetService("Workspace").Interactables.QuestSpecific["sage_poem_3"].Root
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+local WelpSection = MainTab:NewSection("Trees")
+WelpSection:NewButton("White Tree", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.Trees["rsc_woodcutting_1a_01"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+WelpSection:NewButton("Brown Tree", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.Trees["rsc_woodcutting_2a_02b"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+WelpSection:NewButton("Rare Tree", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.Trees["rsc_woodcutting_3a_01"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+
+local WelpSection = MainTab:NewSection("Ores")
+WelpSection:NewButton("Mineral Vain", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.Ores["mineral_vein"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+WelpSection:NewButton("Big Mineral Vain", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.Ores["mineral_vein_big"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+WelpSection:NewButton("Dark Crystal Vein", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.Ores["mineral_vein"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+WelpSection:NewButton("Big Dark Crystal Vein", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.Ores["mineral_vein_t2"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+local WelpSection = MainTab:NewSection("Chests")
+WelpSection:NewButton("Plasma Chest", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.Pickups["plasma_chest"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+local WelpSection = MainTab:NewSection("Fishing")
+WelpSection:NewButton("Fishing Spot", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.FishingHoles["fish_spot"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+local WelpSection = MainTab:NewSection("Broken Lights")
+WelpSection:NewButton("Broken Lights", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.BrokenLights.BrokenSconce.Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+local WelpSection = MainTab:NewSection("Posters")
+WelpSection:NewButton("Posters", "Teleports you to item", function()
+    local me = game.Players.LocalPlayer.Character
+
+    local targetfruit = game:GetService("Workspace").ResourceNodes.Posters["spraycan_quest"].Root
+    
+    me.HumanoidRootPart.CFrame = CFrame.new(targetfruit.Position.X, targetfruit.Position.Y, targetfruit.Position.Z)
+end)
+
+
+
+
+
+
+
+
