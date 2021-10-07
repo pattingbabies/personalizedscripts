@@ -28,4 +28,9 @@ TeleportSection:NewButton("TP To Exit", "Teleports you to exit", function()
 
 end)
 
+TeleportSection:NewButton("ESP", "Teleports you to exit", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandoagoncalves/universal-esp/main/esp.lua", true))()
+end)
+
+
 
