@@ -71,13 +71,6 @@ WelpSection3:NewButton("TP To Items", "Teleports you to items ingame.", function
     plrchar:MoveTo(object.Position)
 end)
 
-WelpSection3:NewButton("TP To Items", "Teleports you to items ingame.", function()
-    local object = game:GetService("Workspace").chunk2["#Item"].Hinge
-    local plrchar = game:GetService("Players").LocalPlayer.Character
-    
-    plrchar:MoveTo(object.Position)
-end)
-
 local MainTab = Window:NewTab("Route 4")
 local WelpSection4 = MainTab:NewSection("Functions")
 
@@ -153,6 +146,8 @@ WelpSection7:NewButton("TP To Items", "Teleports you to items ingame.", function
     
     plrchar:MoveTo(object.Position)
 end)
+
+
 
 
 
