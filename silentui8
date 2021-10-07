@@ -1,0 +1,160 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Bronze Reforged", "BloodTheme")
+local MainTab = Window:NewTab("Main")
+local WelpSection = MainTab:NewSection("Main Functions")
+WelpSection:NewButton("Heal Pokemons", "Heals all your pokemons", function()
+    local args = {
+        [1] = "XEDlnUh2SxuwTLuwl2Em4Q",
+        [2] = "PDS",
+        [3] = "getPartyPokeBalls"
+    }
+    
+    game:GetService("ReplicatedStorage").GET:InvokeServer(unpack(args))
+    wait()
+end)
+
+local MainTab = Window:NewTab("Route 1")
+local WelpSection1 = MainTab:NewSection("Functions")
+
+WelpSection1:NewButton("Gate TP", "Teleports you to Gate for you to move on.", function()
+    local object = game:GetService("Workspace").chunk1.Gate.Darkness.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+
+WelpSection1:NewButton("TP To Items", "Teleports you to items ingame.", function()
+    local object = game:GetService("Workspace").chunk1["#Item"].Hinge
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+end)
+
+local MainTab = Window:NewTab("Route 2")
+local WelpSection2 = MainTab:NewSection("Functions")
+
+WelpSection2:NewButton("Gate TP", "Teleports you to Gate for you to move on.", function()
+    local object = game:GetService("Workspace").chunk2.Gate.Darkness.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+
+WelpSection2:NewButton("TP To Items", "Teleports you to items ingame.", function()
+    local object = game:GetService("Workspace").chunk2["#Item"].Hinge
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+end)
+
+local MainTab = Window:NewTab("Route 3")
+local WelpSection3 = MainTab:NewSection("Functions")
+
+WelpSection3:NewButton("Gate TP", "Teleports you to Gate for you to move on.", function()
+    local object = game:GetService("Workspace").chunk3.Gate.Darkness.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+
+WelpSection3:NewButton("TP To Items", "Teleports you to items ingame.", function()
+    local object = game:GetService("Workspace").chunk3["#Item"].Hinge
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+end)
+
+WelpSection3:NewButton("TP To Items", "Teleports you to items ingame.", function()
+    local object = game:GetService("Workspace").chunk2["#Item"].Hinge
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+end)
+
+local MainTab = Window:NewTab("Route 4")
+local WelpSection4 = MainTab:NewSection("Functions")
+
+WelpSection4:NewButton("Gate TP", "Teleports you to Gate for you to move on.", function()
+    local object = game:GetService("Workspace").chunk4.Gate.Darkness.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+
+WelpSection4:NewButton("TP To Items", "Teleports you to items ingame.", function()
+    local object = game:GetService("Workspace").chunk4["#Item"].Hinge
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+end)
+
+local MainTab = Window:NewTab("Route 5")
+local WelpSection5 = MainTab:NewSection("Functions")
+
+WelpSection5:NewButton("Gate TP", "Teleports you to Gate for you to move on.", function()
+    local object = game:GetService("Workspace").chunk5.Gate.Darkness.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+
+WelpSection5:NewButton("TP To Items", "Teleports you to items ingame.", function()
+    local object = game:GetService("Workspace").chunk5["#Item"].Hinge
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+end)
+
+local MainTab = Window:NewTab("Route 6")
+local WelpSection5 = MainTab:NewSection("Functions")
+
+WelpSection6:NewButton("Gate TP", "Teleports you to Gate for you to move on.", function()
+    local object = game:GetService("Workspace").chunk6.Gate.Darkness.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+
+WelpSection6:NewButton("TP To Items", "Teleports you to items ingame.", function()
+    local object = game:GetService("Workspace").chunk6["#Item"].Hinge
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+end)
+
+local MainTab = Window:NewTab("Route 7")
+local WelpSection5 = MainTab:NewSection("Functions")
+
+WelpSection7:NewButton("Gate TP", "Teleports you to Gate for you to move on.", function()
+    local object = game:GetService("Workspace").chunk7.Gate.Darkness.Part
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+
+end)
+
+
+WelpSection7:NewButton("TP To Items", "Teleports you to items ingame.", function()
+    local object = game:GetService("Workspace").chunk7["#Item"].Hinge
+    local plrchar = game:GetService("Players").LocalPlayer.Character
+    
+    plrchar:MoveTo(object.Position)
+end)
+
+
+
+
+
