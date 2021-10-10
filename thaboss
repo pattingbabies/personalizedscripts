@@ -1,0 +1,69 @@
+getgenv().autotraina = false;
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Thaboss Private", "BloodTheme")
+
+local whoretab = Window:NewTab("Main")
+local MainSection = whoretab:NewSection("Features")
+
+
+
+MainSection:NewToggle("Auto Train Strength", "Automatically trains for you",function(bool)
+    getgenv().autotraina = bool
+    print('Auto Train is: ', bool);
+    if bool then
+        autotrain();
+    end
+end)
+
+MainSection:NewButton("Collect All Coins", "collects all coins ingame", function()
+    for _,v in pairs(game:GetService("Workspace").ConsumableSpawns:GetDescendants()) do
+        if v:IsA("TouchTransmitter") then
+        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
+        wait()
+        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
+        end
+        end
+end)
+
+MainSection:NewButton("Sell Circle", "collects all coins ingame", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").RingAreas.RangeSystem.Server.Sell.Ring.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+
+local frlsection = whoretab:NewSection("Teleports")
+
+
+frlsection:NewButton("Bozz Zone", "Teleports you to selected zone", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").RingAreas.BossZones.BossZone.Range.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+
+frlsection:NewButton("King Of the Hill", "Teleports you to selected zone", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").RingAreas.RangeSystem.Server.KOTHArea.Ring.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+
+
+function autotrain()
+    spawn(function()
+        while getgenv().autotraina == true do
+            game:GetService("ReplicatedStorage").Remotes.LiftWeight:FireServer()
+            wait()
+        end
+    end)
+    end
+    
