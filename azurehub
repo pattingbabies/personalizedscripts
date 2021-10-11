@@ -135,7 +135,7 @@ local FunTP = Window:NewTab("Teleports")
 local FunRSection = FunTP:NewSection("NPC Teleports")
 FunRSection:NewButton("Teleport To Banjo Player", "Teleports you to Banjo Player", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Banjo Player"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC["Random Npcs"]["Banjo Player"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -143,7 +143,7 @@ end)
 
 FunRSection:NewButton("Teleport To Young Lady", "Teleports you to Young Lady", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Young Lady"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC["Random Npcs"]["Young Lady"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -151,7 +151,7 @@ end)
 
 FunRSection:NewButton("Teleport To Barber", "Teleports you to Barber", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC.Barber.Head.CFrame)
+    local location = (game:GetService("Workspace").NPC["Random Npcs"].Barber.Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -159,7 +159,7 @@ end)
 
 FunRSection:NewButton("Teleport To Sales Man", "Teleports you to Sales Man", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Sales Man"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC["Random Npcs"]["Sales Man"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -167,7 +167,7 @@ end)
 
 FunRSection:NewButton("Teleport To Merchant", "Teleports you to Merchant", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC.Merchant.Head.CFrame)
+    local location = (game:GetService("Workspace").NPC["Random Npcs"].Merchant.Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -175,7 +175,7 @@ end)
 
 FunRSection:NewButton("Teleport To Chief of police", "Teleports you to Chief of police", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Chief of police"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC["Random Npcs"]["Chief of police"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -183,7 +183,7 @@ end)
 
 FunRSection:NewButton("Teleport To Dai", "Teleports you to Dai", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["ek npc"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC["Random Npcs"]["ek npc"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -191,7 +191,7 @@ end)
 
 FunRSection:NewButton("Teleport To Cabbage Man", "Teleports you to Cabbage Man", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Cabbage Man"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC["Random Npcs"]["Cabbage Man"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -199,7 +199,7 @@ end)
 
 FunRSection:NewButton("Teleport To Earth Police", "Teleports you to Earth Police", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Earth Police"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC["Random Npcs"]["Earth Police"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -207,7 +207,7 @@ end)
 
 FunRSection:NewButton("Teleport To ek lady", "Teleports you to ek lady", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["ek lady"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC["Random Npcs"]["ek lady"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -218,7 +218,7 @@ end)
 local FunRSection = FunTP:NewSection("Trainer TPs")
 FunRSection:NewButton("Teleport To Firebending Trainer", "Teleports you to Firebending Trainer", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Firebending Trainer"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC.Trainers["Firebending Trainer"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -226,7 +226,7 @@ end)
 
 FunRSection:NewButton("Teleport To Firebending Trainer 2", "Teleports you to Firebending Trainer 2", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Firebending Trainer 2"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC.Trainers["Firebending Trainer 2"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -235,7 +235,7 @@ end)
 
 FunRSection:NewButton("Teleport To Airbending Trainer", "Teleports you to Airbending Trainer", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Airbending Trainer"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC.Trainers["Airbending Trainer"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -243,7 +243,7 @@ end)
 
 FunRSection:NewButton("Teleport To Airbending Trainer 2", "Teleports you to Airbending Trainer 2", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Firebending Trainer 2"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC.Trainers["Firebending Trainer 2"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -251,7 +251,7 @@ end)
 
 FunRSection:NewButton("Teleport To Earth Bender Trainer", "Teleports you to Earth Bender Trainer", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Earth Bender Trainer"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC.Trainers["Earth Bender Trainer"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -259,7 +259,7 @@ end)
 
 FunRSection:NewButton("Teleport To Earth Bender Trainer 2", "Teleports you to Earth Bender Trainer 2", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Earth Bender Trainer 2"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC.Trainers["Earth Bender Trainer 2"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -267,7 +267,7 @@ end)
 
 FunRSection:NewButton("Teleport To Water Bender Trainer", "Teleports you to Water Bender Trainer", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Water Bender Trainer"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC.Trainers["Water Bender Trainer"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -275,7 +275,7 @@ end)
 
 FunRSection:NewButton("Teleport To Water Bender Trainer 2", "Teleports you to Water Bender Trainer 2", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Water Bender Trainer 2"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC.Trainers["Water Bender Trainer 2"].Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
@@ -283,7 +283,16 @@ end)
 
 FunRSection:NewButton("Teleport To Water Bender Trainer 3", "Teleports you to Water Bender Trainer 3", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace").NPC["Water Bender Trainer 3"].Head.CFrame)
+    local location = (game:GetService("Workspace").NPC.Trainers["Water Bender Trainer 3"].Head.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+local FunRRRSection = FunTP:NewSection("Sub-Classes Teleports")
+FunKKSection:NewButton("Thief", "nil", function()
+	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").NPC["Sub Classes"].Thief.Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
