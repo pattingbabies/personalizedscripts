@@ -1,0 +1,59 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Silent Privaté", "BloodTheme")
+
+
+
+
+-- Games
+local Dollz = Window:NewTab("Features")
+local FunSection = Dollz:NewSection("Main Functions")
+FunSection:NewButton("Instant Kill", "function", function()
+    for i, v in next, getgc(true) do
+        if type(v) == "table" and rawget(v, "damage") then
+            v.damage = math.huge
+        end
+    end
+end)
+
+FunSection:NewButton("High RPM", "function", function()
+    for i, v in next, getgc(true) do
+        if type(v) == "table" and rawget(v, "damage") then
+            v.rpm = math.huge
+        end
+    end
+  end)
+
+  FunSection:NewButton("Penetration", "function", function()
+    for i, v in next, getgc(true) do
+        if type(v) == "table" and rawget(v, "damage") then
+            v.penetration = math.huge
+        end
+    end
+  end)
+
+
+  FunSection:NewButton("Inf Zoom", "function", function()
+    for i, v in next, getgc(true) do
+        if type(v) == "table" and rawget(v, "damage") then
+            v.maxzoom = math.huge
+        end
+    end
+  end)
+
+  FunSection:NewButton("inf shooting range", "function", function()
+    for i, v in next, getgc(true) do
+        if type(v) == "table" and rawget(v, "damage") then
+            v.range = math.huge
+        end
+    end
+  end)
+
+  local ADollz = Window:NewTab("Teleports")
+local SFunSection = ADollz:NewSection("Game Teleports")
+SFunSection:NewButton("Hard Mode", "function", function()
+    game:GetService("TeleportService"):Teleport(5215921305)
+  end)
+
+  SFunSection:NewButton("Apocalypse Mode", "function", function()
+    game:GetService("TeleportService"):Teleport(7092693227)
+  end)
