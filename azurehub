@@ -387,7 +387,7 @@ function automed()
             }
             
             game:GetService("ReplicatedStorage").RemoteEvents:FindFirstChild("Create Key"):FireServer(unpack(args))
-            wait()
+            wait(0.2)
         end
     end)
     end
