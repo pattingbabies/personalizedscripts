@@ -72,7 +72,7 @@ end)
 
 FunPSection:NewButton("Teleport To Mat", "teleports u to meditation mat", function()
     local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local location = (game:GetService("Workspace")["Meditation Mat"].CFrame)
+    local location = (CFrame.new(-302, 3, -15643))
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
     wait(0.1)
     pl.CFrame = location
