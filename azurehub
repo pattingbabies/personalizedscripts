@@ -290,7 +290,7 @@ FunRSection:NewButton("Teleport To Water Bender Trainer 3", "Teleports you to Wa
 end)
 
 local FunRRRSection = FunTP:NewSection("Sub-Classes Teleports")
-FunKKSection:NewButton("Thief", "nil", function()
+FunRRRSection:NewButton("Thief", "nil", function()
 	local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
     local location = (game:GetService("Workspace").NPC["Sub Classes"].Thief.Head.CFrame)
     local humanoid = game.Players.LocalPlayer.Character.Humanoid
