@@ -56,6 +56,47 @@ frlsection:NewButton("King Of the Hill", "Teleports you to selected zone", funct
     pl.CFrame = location
 end)
 
+local frlsection = whoretab:NewSection("Territory TPs")
+frlsection:NewButton("Territory 1", "Teleports you to selected zone", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").RingAreas.Territories.T1.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+frlsection:NewButton("Territory 2", "Teleports you to selected zone", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").RingAreas.Territories.T2.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+frlsection:NewButton("Territory 3", "Teleports you to selected zone", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").RingAreas.Territories.T3.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+frlsection:NewButton("Territory 4", "Teleports you to selected zone", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").RingAreas.Territories.T4.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
+frlsection:NewButton("Territory 5", "Teleports you to selected zone", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").RingAreas.Territories.T5.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+end)
+
 
 
 function autotrain()
