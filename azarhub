@@ -1,0 +1,154 @@
+getgenv().AutoStrength = false;
+getgenv().AutoKi = false;
+getgenv().AutoChargeKI = false;
+getgenv().Rebirth = false;
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Azar Hub", "Ocean")
+
+local MainTab = Window:NewTab("Main")
+local PlayerSection = MainTab:NewSection("Autofarms")
+    PlayerSection:NewToggle("Auto Strength & Speed", "gains strength at an incredible speed", function(bool)
+        getgenv().AutoStrength = bool
+        print('Auto Strength is: ', bool);
+        if bool then
+        autostrength();
+        end
+    end)
+
+    PlayerSection:NewToggle("Auto Ki", "gains ki at an incredible speed", function(bool)
+        getgenv().AutoKi = bool
+        print('Auto Ki is: ', bool);
+        if bool then
+        autoki();
+        end
+    end)
+
+    PlayerSection:NewToggle("Auto Charge Ki", "charges ki at an incredible speed", function(bool)
+        getgenv().AutoChargeKI = bool
+        print('Auto Charge KI is: ', bool);
+        if bool then
+        autocharge();
+        end
+    end)
+
+    PlayerSection:NewToggle("Auto Rebirth", "automatically rebirths", function(bool)
+        getgenv().Rebirth = bool
+        print('Auto Rebirth is: ', bool);
+        if bool then
+        autorebirth();
+        end
+    end)
+
+    local PlayerSection = MainTab:NewSection("More")
+    PlayerSection:NewButton("Redeem All Codes", "redeems all codes ingame", function()
+        local args = {
+            [1] = "NewYear2019!!"
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Redeem:InvokeServer(unpack(args))
+
+        local args = {
+            [1] = "brolymode20"
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Redeem:InvokeServer(unpack(args))
+
+        
+        local args = {
+            [1] = "1kfollowers"
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Redeem:InvokeServer(unpack(args))
+
+        
+        local args = {
+            [1] = "fastleveling12"
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Redeem:InvokeServer(unpack(args))
+        
+        end)
+        
+        PlayerSection:NewButton("Instant Save", "instantly saves ur game", function()
+
+game:GetService("ReplicatedStorage").Events.save:FireServer()
+
+            end)
+
+        local Extra = Window:NewTab("Teleports")
+        local Extras = Extra:NewSection("TPs")
+        Extras:NewButton("Rebirth Guy", "tps u to rebirth guy", function()
+            local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+            local location = (game:GetService("Workspace")["El Grande Padre"].Head.CFrame)
+            local humanoid = game.Players.LocalPlayer.Character.Humanoid
+            wait(0)
+            pl.CFrame = location
+            
+            end)
+
+
+
+function autostrength()
+    spawn(function()
+        while getgenv().AutoStrength == true do
+local args = {
+    [1] = true,
+    [2] = 2,
+    [3] = game:GetService("Players").LocalPlayer.Character.LeftHand,
+    [4] = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.swing
+}
+
+game:GetService("ReplicatedStorage").Events.combat:FireServer(unpack(args))
+
+            wait()
+        end
+    end)
+    end
+    
+    function autoki()
+        spawn(function()
+            while getgenv().AutoKi == true do
+
+local args = {
+    [1] = true,
+    [2] = game:GetService("Players").LocalPlayer.Character.Effects,
+    [3] = Vector3.new(951.82495117188, 5428.0634765625, 3958.4523925781),
+    [4] = game:GetService("Players").LocalPlayer.Character.RightHand
+}
+
+game:GetService("ReplicatedStorage").Events.blast:FireServer(unpack(args))
+
+    
+                wait()
+            end
+        end)
+        end
+        
+
+        function autocharge()
+            spawn(function()
+                while getgenv().AutoChargeKI == true do
+local args = {
+    [1] = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
+    [2] = true
+}
+
+game:GetService("ReplicatedStorage").Events.charge:FireServer(unpack(args))
+                    wait()
+                end
+            end)
+            end
+            
+            function autorebirth()
+                spawn(function()
+                    while getgenv().Rebirth == true do
+
+game:GetService("ReplicatedStorage").Events.padre:FireServer()
+
+
+                        wait()
+                    end
+                end)
+                end
