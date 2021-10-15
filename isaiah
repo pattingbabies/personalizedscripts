@@ -1,0 +1,12 @@
+while wait() do
+
+local descendants = game:GetService("Workspace").Gifts:GetDescendants()
+
+local me = game.Players.LocalPlayer.Character
+
+for index, descendant in pairs(descendants) do
+if descendant.Name == "Primary" then
+me.HumanoidRootPart.CFrame = CFrame.new(descendant.Position.X, descendant.Position.Y, descendant.Position.Z)
+end
+end
+end
