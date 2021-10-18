@@ -1,0 +1,98 @@
+getgenv().autosword = false;
+getgenv().autostamina = false;
+getgenv().autowealth = false;
+getgenv().autoslut = false;
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("BranBB", "Ocean")
+
+local MainTab = Window:NewTab("Main")
+local PlayerSection = MainTab:NewSection("Farming")
+PlayerSection:NewToggle("XP & Strength Farm(equip sword)", "Experience Farm, uses sword to farm", function(bool)
+    getgenv().autosword = bool
+    print('Auto Sword is: ', bool);
+    if bool then
+     autohit();
+     end
+end)
+local UpgradeSection = MainTab:NewSection("Auto Upgrade")
+UpgradeSection:NewToggle("Stamina", "Experience Farm, uses sword to farm", function(bool)
+    getgenv().autostamina = bool
+    print('Auto Sword is: ', bool);
+    if bool then
+    autostamina();
+     end
+end)
+
+UpgradeSection:NewToggle("Control", "Experience Farm, uses sword to farm", function(bool)
+    getgenv().autowealth = bool
+    print('Auto Sword is: ', bool);
+    if bool then
+    autocontrol();
+     end
+end)
+
+UpgradeSection:NewToggle("Awareness", "Experience Farm, uses sword to farm", function(bool)
+    getgenv().autoslut = bool
+    print('Auto Sword is: ', bool);
+    if bool then
+    autoaware();
+     end
+end)
+
+
+function autohit()
+    spawn(function()
+        while getgenv().autosword == true do
+            local args = {
+                [1] = "Click",
+                [2] = game:GetService("ReplicatedStorage").Weapon.Sword.Nichirin1.Basic_Anim.dmg_p2
+            }
+            
+            game:GetService("ReplicatedStorage").Remotes.Damage:FireServer(unpack(args))
+            wait()
+        end
+end)
+end
+
+function autoaware()
+    spawn(function()
+        while getgenv().autoslut == true do
+            local args = {
+                [1] = "Awareness" -- Stamina, Control, Awareness
+            }
+            
+            game:GetService("ReplicatedStorage").Remotes.UpgradeStats:FireServer(unpack(args))
+            wait()
+        end
+end)
+end
+
+function autocontrol()
+    spawn(function()
+        while getgenv().autowealth == true do
+            local args = {
+                [1] = "Control" -- Stamina, Control, Awareness
+            }
+            
+            game:GetService("ReplicatedStorage").Remotes.UpgradeStats:FireServer(unpack(args))
+            wait()
+        end
+end)
+end
+
+
+function autostamina()
+    spawn(function()
+        while getgenv().autostamina == true do
+            local args = {
+                [1] = "Stamina" -- Stamina, Control, Awareness
+            }
+            
+            game:GetService("ReplicatedStorage").Remotes.UpgradeStats:FireServer(unpack(args))
+            wait()
+        end
+end)
+end
+
