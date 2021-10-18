@@ -1,0 +1,141 @@
+getgenv().autosword = false;
+getgenv().autosword2 = false;
+getgenv().autosword3 = false;
+getgenv().autosword4 = false;
+getgenv().autosword5 = false;
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Zuzu Hub", "Ocean")
+
+local MainTab = Window:NewTab("Main")
+local ExtraTab = Window:NewTab("Extra")
+local WinkySection = ExtraTab:NewSection("Random Stuff")
+
+WinkySection:NewButton("TP To Random Location", "Teleports u to a random spawn location", function()
+game:GetService("ReplicatedStorage").Client.Teleport:InvokeServer()
+end)
+
+WinkySection:NewButton("TP To Disclosed space", "Teleports u to a disclosed place(farming)", function()
+    local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local location = (game:GetService("Workspace").Spawn.SpawnLocation.CFrame)
+    local humanoid = game.Players.LocalPlayer.Character.Humanoid
+    wait(0.1)
+    pl.CFrame = location
+    end)
+
+local PlayerSection = MainTab:NewSection("Autofarm (Enable All)")
+PlayerSection:NewToggle("Skill 1", "Farms levels ingame by using ur spells", function(bool)
+    getgenv().autosword = bool
+    print('Auto Sword is: ', bool);
+    if bool then
+     autohit();
+     end
+end)
+
+PlayerSection:NewToggle("Skill 2", "Farms levels ingame by using ur spells", function(bool)
+    getgenv().autosword2 = bool
+    print('Auto Sword is: ', bool);
+    if bool then
+     autohit2();
+     end
+end)
+
+PlayerSection:NewToggle("Skill 3", "Farms levels ingame by using ur spells", function(bool)
+    getgenv().autosword3 = bool
+    print('Auto Sword is: ', bool);
+    if bool then
+     autohit3();
+     end
+end)
+
+PlayerSection:NewToggle("Skill 4", "Farms levels ingame by using ur spells", function(bool)
+    getgenv().autosword4 = bool
+    print('Auto Sword is: ', bool);
+    if bool then
+     autohit4();
+     end
+end)
+
+PlayerSection:NewToggle("Skill 5", "Farms levels ingame by using ur spells", function(bool)
+    getgenv().autosword5 = bool
+    print('Auto Sword is: ', bool);
+    if bool then
+     autohit5();
+     end
+end)
+
+function autohit()
+    spawn(function()
+        while getgenv().autosword == true do
+
+local args = {
+    [1] = "Multielement Cast"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild("350677907Client").StartMove:FireServer(unpack(args))
+            
+            wait()
+        end
+end)
+end
+
+function autohit2()
+    spawn(function()
+        while getgenv().autosword2 == true do
+
+local args = {
+    [1] = "Multielement Barrage"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild("350677907Client").StartMove:FireServer(unpack(args))
+            
+            wait()
+        end
+end)
+end
+
+function autohit3()
+    spawn(function()
+        while getgenv().autosword3 == true do
+
+local args = {
+    [1] = "Pseudofist"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild("350677907Client").StartMove:FireServer(unpack(args))
+            
+            wait()
+        end
+end)
+end
+
+function autohit4()
+    spawn(function()
+        while getgenv().autosword4 == true do
+
+local args = {
+    [1] = "Pseudoform"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild("350677907Client").StartMove:FireServer(unpack(args))
+            
+            wait()
+        end
+end)
+end
+
+function autohit5()
+    spawn(function()
+        while getgenv().autosword5 == true do
+
+local args = {
+    [1] = "Fusion of the Elements"
+}
+
+game:GetService("ReplicatedStorage"):FindFirstChild("350677907Client").StartMove:FireServer(unpack(args))
+            
+            wait()
+        end
+end)
+end
